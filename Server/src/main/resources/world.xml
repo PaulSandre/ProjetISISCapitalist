@@ -23,7 +23,7 @@ and open the template in the editor.
         <product>
             <id>1</id>
             <name>Cannabis</name>
-            <logo>icones\cannabis.png</logo>
+            <logo>icones\weed.png</logo>
             <cout>4</cout>
             <croissance>0.07</croissance>
             <revenu>1</revenu>
@@ -37,7 +37,7 @@ and open the template in the editor.
         <product>
             <id>2</id>
             <name>Cocaine</name>
-            <logo>icones\coke.png</logo>
+            <logo>icones\coke.jpg</logo>
             <cout>60</cout>
             <croissance>0.15</croissance>
             <revenu>60</revenu>
@@ -51,7 +51,7 @@ and open the template in the editor.
         <product>
             <id>3</id>
             <name>Champignons</name>
-            <logo>icones\mushroom.png</logo>
+            <logo>icones\mushrooms.png</logo>
             <cout>720</cout>
             <croissance>14</croissance>
             <revenu>540</revenu>
