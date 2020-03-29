@@ -28,8 +28,9 @@ export class AppComponent {
   }
 
   onProductionDone(p: Product) {
-    this.world.money = this.world.money + p.revenu;
-    this.world.score = this.world.score + 1;
+    this.world.money = this.world.money + p.quantite * p.revenu * (1 + (this.world.activeangels * this.world.angelbonus / 100));
+    this.world.score = this.world.score + p.quantite * p.revenu * (1 + (this.world.activeangels * this.world.angelbonus / 100));
+    this.world.totalangels = Math.round(this.world.totalangels + (150 * Math.sqrt(this.world.score / Math.pow(10, 15))));
   }
   
 }

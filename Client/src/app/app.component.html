@@ -16,15 +16,12 @@
     <div class="col-md-10">
       <div style="margin-right: 80px; margin-left: 20px;" class="row">
         <app-product
-          [money]="world.money"  [prod]="world.products.product[0]"
+          [money]="world.money" (notifyProduction)="onProductionDone($event)" [prod]="world.products.product[0]"
           class="product col-md-5 shadow p-3 mb-5 bg-dark rounded"></app-product>
         <app-product
-          [money]="world.money"  [prod]="world.products.product[1]"
+          [money]="world.money" (notifyProduction)="onProductionDone($event)" [prod]="world.products.product[1]"
           class="product col-md-5 offset-md-2 shadow p-3 mb-5 bg-dark rounded">
         </app-product>
-        <app-product 
-          [money]="world.money"  [prod]="world.products.product[2]"
-          class="product col-md-5 shadow p-3 mb-5 bg-dark rounded"></app-product>
       </div>
     </div>
   </div>

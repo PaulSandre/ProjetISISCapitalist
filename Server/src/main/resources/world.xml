@@ -10,12 +10,12 @@ and open the template in the editor.
     xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
     xsi:noNamespaceSchemaLocation='jaxb/world/worldSchema.xsd'>
     <name>Dealer</name>
-    <logo>icones\logo_dealer.jpg</logo>
-    <money>0</money>
-    <score>0</score>
-    <totalangels>0</totalangels>
-    <activeangels>0</activeangels>
-    <angelbonus>0.02</angelbonus>
+    <logo></logo>
+    <money>15</money>
+    <score>15</score>
+    <totalangels>1</totalangels>
+    <activeangels>1</activeangels>
+    <angelbonus>2</angelbonus>
     <lastupdate>0</lastupdate>
     
     <!--*****************************PRODUCTS**************************** -->
@@ -25,11 +25,11 @@ and open the template in the editor.
             <name>Cannabis</name>
             <logo>icones\weed.png</logo>
             <cout>4</cout>
-            <croissance>0.07</croissance>
-            <revenu>1</revenu>
-            <vitesse>1000</vitesse>
-            <quantite>0</quantite>
-            <timeleft>0</timeleft>
+            <croissance>2</croissance>
+            <revenu>3</revenu>
+            <vitesse>25</vitesse>
+            <quantite>15</quantite>
+            <timeleft>2000</timeleft>
             <managerUnlocked>false</managerUnlocked>
             <palliers>
             </palliers>
@@ -39,28 +39,16 @@ and open the template in the editor.
             <name>Cocaine</name>
             <logo>icones\coke.jpg</logo>
             <cout>60</cout>
-            <croissance>0.15</croissance>
+            <croissance>1,15</croissance>
             <revenu>60</revenu>
-            <vitesse>3000</vitesse>
-            <quantite>0</quantite>
-            <timeleft>0</timeleft>
+            <vitesse>8</vitesse>
+            <quantite>10</quantite>
+            <timeleft>300</timeleft>
             <managerUnlocked>false</managerUnlocked>
             <palliers>
             </palliers>
         </product>
         <product>
-            <id>3</id>
-            <name>Champignons</name>
-            <logo>icones\mushrooms.png</logo>
-            <cout>720</cout>
-            <croissance>14</croissance>
-            <revenu>540</revenu>
-            <vitesse>6000</vitesse>
-            <quantite>0</quantite>
-            <timeleft>0</timeleft>
-            <managerUnlocked>false</managerUnlocked>
-            <palliers>
-            </palliers>
         </product>
     </products>
     <!--*****************************ALL PALLIER**************************** -->

@@ -31,33 +31,67 @@ export class ProductComponent implements OnInit {
     this._money = value;
   }
 
+  @Output() notifyProduction: EventEmitter<Product> = new EventEmitter<Product>();
 
   constructor() { }
 
 
   ngOnInit(): void {
+    setInterval(() => {
+      this.calcScore();
+    }, 100);
   }
 
 
   ngAfterViewInit() {
-    this.bar = new ProgressBar.Line(this.progressBarItem.nativeElement, {
-      strokeWidth: 4,
-      easing: 'easeInOut',
-      duration: 1400,
-      color: '#FFEA82',
-      trailColor: '#eee',
-      trailWidth: 1,
-      svgStyle: { width: '100%', height: '100%' }
-    });
+    setTimeout(() => {
+      this.bar = new ProgressBar.Line(this.progressBarItem.nativeElement, {
+        strokeWidth: 4,
+        easing: 'easeInOut',
+        color: '#FFEA82',
+        trailColor: '#eee',
+        trailWidth: 1,
+        svgStyle: { width: '100%', height: '100%' },
+        from: { color: '#FFEA82' },
+        to: { color: '#ED6A5A' },
+        step: (state, bar) => {
+          bar.path.setAttribute('stroke', state.color);
+        }
+      });
+    }, 100)
+
   }
 
   startFabrication() {
-    this.bar.animate(1, { duration: this.product.vitesse });
-    this.product.timeleft = this.product.vitesse;
-    this.lastupdate = Date.now();
-    this.isRun = true;
-    console.log('test2');
+    if (this.product.quantite >= 1) {
+      this.progress = (this.product.vitesse - this.product.timeleft) / this.product.vitesse;
+      this.bar.animate(1, { duration: this.progress });
+      this.product.timeleft = this.product.vitesse;
+      this.lastupdate = Date.now();
+      this.isRun = true;
+      console.log('test2');
+    }
   }
+
+  calcScore() {
+    if (this.isRun) {
+      if (this.product.timeleft > 0) {
+        this.product.timeleft = this.product.timeleft - (Date.now() - this.lastupdate);
+      }
+      else {
+        this.product.timeleft = 0;
+        this.lastupdate = 0;
+        this.isRun = false;
+        this.bar.set(0);
+      }
+      this.notifyProduction.emit(this.product);
+    }
+    if (this.product.managerUnlocked) {
+      this.startFabrication();
+    }
+  }
+
+
 
 
 }

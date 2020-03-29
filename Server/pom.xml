@@ -19,29 +19,61 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jersey</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jersey</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>org.junit.vintage</groupId>
-					<artifactId>junit-vintage-engine</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>2.3.1</version>
+            <scope>runtime</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-core</artifactId>
+            <version>1.3</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
 
 	<build>
 		<plugins>
@@ -49,34 +81,9 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-		 <plugin>
-		  <groupId>org.jvnet.jaxb2.maven2</groupId>
-		  <artifactId>maven-jaxb2-plugin</artifactId>
-		  <version>0.12.0</version>
-		  <executions>
-		   <execution>
-		    <goals>
-		     <goal>generate</goal>
-		    </goals>
-		    <configuration>
-		     <schemaIncludes>
-		      <include>jaxb/bindingProjet/*.xsd</include>
-		     </schemaIncludes>
-		     <episodeFile>${project.build.directory}/generated-sources/xjc/META-INF/jaxb-bindingProjet.episode</episodeFile>
-		    </configuration>
-		    <id>jaxb-generate-bindingProjet</id>
-		   </execution>
-		  </executions>
-		  <configuration>
-		   <catalog>src/main/resources/jaxb/catalog.xml</catalog>
-		   <catalogResolver>org.jvnet.jaxb2.maven2.resolver.tools.ClasspathCatalogResolver</catalogResolver>
-		   <forceRegenerate>true</forceRegenerate>
-		   <generateDirectory>${project.build.directory}/generated-sources/xjc</generateDirectory>
-		   <verbose>true</verbose>
-		  </configuration>
-		 </plugin>
 		</plugins>
 	</build>
+        
 	<repositories>
         <repository>
             <id>spring-milestones</id>
