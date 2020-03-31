@@ -51,5 +51,52 @@ public class Services {
     public World getWorld() throws JAXBException, FileNotFoundException, IOException {
         return readWorldFromXml();
     }
+    
+    public boolean updateManager(PallierType newmanager) throws JAXBException, IOException{
+        World world =getWorld();
+        PallierType manager = findManagerByName(world, newmanager.getName());
+        
+        if (manager == null){
+            return false;
+        }
+        manager.setUnlocked(true);
+        
+        ProductType product = findProductByID(world, manager.getIdcible());
+        if (product==null){
+            return false;
+        }
+       
+        product.setManagerUnlocked(true);
+        
+        double argent = world.getMoney();
+        double prix = manager.getSeuil();
+        double cout = argent-prix;
+        world.setMoney(cout);
+        
+        
+        saveWorldToXml(world);
+        return true;
+        
+    }
+    
+      public ProductType findProductByID(World world, int id ){
+        ProductType pt = null;
+        for (ProductType a :world.getProducts().product){
+            if (id == a.id){
+                pt=a;
+            }
+        }
+        return pt;
+    }
+    
+    public PallierType findManagerByName(World world, String name){
+        PallierType manager=null;
+        for (PallierType a: world.getManagers().pallier){
+            if(name.equals(a.getName())){
+                manager=a;
+            }
+        }
+        return manager;
+    }
 
 }

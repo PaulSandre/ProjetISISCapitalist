@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import { World} from './world';
+import { World, Pallier} from './world';
 
 @Injectable({
   providedIn: 'root'
@@ -22,4 +22,13 @@ export class RestserviceService {
   getServer(): string{
     return this.server;
   }
+
+  public putManager(manager: Pallier): Promise<Response> {
+    // console.log(upgrade);
+     return this.http
+       .put(this.server + "generic/manager", manager,)
+       .toPromise()
+       .then(response => response)
+       .catch(this.handleError);
+   }
 }

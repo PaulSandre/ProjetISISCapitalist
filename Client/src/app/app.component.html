@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row navB  bg-dark">
     <div class="col-md-4">
-      <span><img src="../assets/dealer.jpg" class="rounded-circle round" /> </span>
+      <span><img src="../assets/jazz.jpg" class="rounded-circle round" /> </span>
       <span style="margin-left: 10px; color: aliceblue;" class="txt text-uppercase font-weight-bold text-monospace"
         id="worldname"> {{world.name}}
       </span>
@@ -11,17 +11,66 @@
         <span>$</span><span [innerHTML]="world.money | bigvalue"></span>
       </div>
     </div>
+    <div class="col-md-4">
+      <div class="txt row">
+        <div class="col-md-5">
+          <button style="height: 100px; width: 155px; font-size: 20px;" *ngIf="qtmulti!=100000" class="btn btn-info"
+            (click)="commutateur()">
+            <span>Buy</span><br />
+            <span>x{{qtmulti}}</span>
+          </button>
+          <button style="height: 100px; width: 155px; font-size: 20px;" *ngIf="qtmulti==100000" class="btn btn-info"
+            (click)="commutateur()">
+            <span>Buy</span><br />
+            <span>Max</span>
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
   <div style="margin-top: 40px;" class="row">
+    <div style="line-height: 100em;" class="col-md-2">
+      <button class="button btn btn-info btn-block" data-toggle="modal" (click)="managersModal.show()"><span
+          *ngIf="dispoManager" class="badge text-warning">New</span>Managers</button>
+    </div>
     <div class="col-md-10">
       <div style="margin-right: 80px; margin-left: 20px;" class="row">
-        <app-product
-          [money]="world.money" (notifyProduction)="onProductionDone($event)" [prod]="world.products.product[0]"
+        <app-product [money]="world.money" [qtmulti]="qtmulti" (notifyMoney)="onAchatDone($event)"
+          (notifyProduction)="onProductionDone($event)" [prod]="world.products.product[0]"
           class="product col-md-5 shadow p-3 mb-5 bg-dark rounded"></app-product>
-        <app-product
-          [money]="world.money" (notifyProduction)="onProductionDone($event)" [prod]="world.products.product[1]"
+        <app-product [money]="world.money" [qtmulti]="qtmulti" (notifyMoney)="onAchatDone($event)"
+          (notifyProduction)="onProductionDone($event)" [prod]="world.products.product[1]"
           class="product col-md-5 offset-md-2 shadow p-3 mb-5 bg-dark rounded">
         </app-product>
       </div>
     </div>
   </div>
+
+  <app-modal #managersModal>
+    <div class="app-modal-header">
+      <h4 class="modal-title">Managers</h4>
+    </div>
+    <div class="app-modal-body">
+      <div *ngFor="let manager of world.managers.pallier">
+        <div *ngIf="!manager.unlocked" class="row rounded notif">
+          <div class="col-md-4">
+            <span>
+              <img [attr.src]="server+manager.logo" class="rounded-circle round img" />
+            </span>
+          </div>
+          <div class="col-md-5">
+            <span class="txt2 row text-center font-weight-bold">{{manager.name}}</span>
+            <span class="row text-center"></span>
+            <span class="row text-center">{{manager.seuil}}</span>
+          </div>
+          <div class="col-md-3">
+            <button style="height: 100px; width: 100px;" class="btn btn-primary" (click)="achatManager(manager)"
+              [disabled]="world.money < manager.seuil">Hire!</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="app-modal-footer">
+      <button type="button" class="btn btn-danger" (click)="managersModal.hide()">Close</button>
+    </div>
+  </app-modal>

@@ -4,10 +4,22 @@
             <img [attr.src]="server+product.logo" class="rounded-circle round img" (click)="startFabrication()" /> 
         </span>
     </div>
+    <div class="col-md-3">
+        <span>{{product.name}}</span>
+    </div> 
     <div style="margin-top: 10px; margin-left: 15px; margin-right: 10px;" class="col-md">
         <div class="row">
             <div style="height: 35px; width: 305px; color: black;" class="txt progress" #bar>
+                <span class="cont" [innerHTML]="product.revenu | bigvalue"></span>
             </div>
+        </div>
+        <div style="margin-top: 10px;" class="txt row">
+            <button [disabled]="_qtmulti >  calcMaxCanBuy()" class="col-md-6 btn btn-info" (click)="achatProduct()">
+                <div style="font-size: 20px;" class="row rounded">
+                    <span class="col-md-7 d-flex flex-row">x{{_qtmulti}}</span>
+                    <span class="col-md-5 d-flex flex-row-reverse" [innerHTML]="product.cout | bigvalue"></span>
+                </div>
+            </button>
         </div>
     </div>
 </div>

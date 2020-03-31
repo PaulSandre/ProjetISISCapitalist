@@ -26,18 +26,24 @@ import javax.xml.bind.JAXBException;
  * @author ejaffre
  */
 @Path("generic")
-public class Webservice { 
-    
+public class Webservice {
+
     Services services;
-    
+
     public Webservice() {
         services = new Services();
     }
-    
+
     @GET
     @Path("world")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Response getWorld() throws JAXBException, IOException{
+    public Response getWorld() throws JAXBException, IOException {
         return Response.ok(services.getWorld()).build();
+    }
+
+    @PUT
+    @Path("manager")
+    public void putManager(@Context HttpServletRequest request, PallierType manager) throws JAXBException, IOException {
+        services.updateManager(manager);
     }
 }

@@ -18,13 +18,33 @@ export class ProductComponent implements OnInit {
   bar: any;
   progress: any;
   product: Product;
+  _qtmulti: number;
+  maxAchat: number;
+
+  @Input()
+  set qtmulti(value: number) {
+    if (value >= 100000) {
+      this._qtmulti = this.calcMaxCanBuy();
+    }
+    else {
+      this._qtmulti = value;
+    }
+  }
 
   @Input()
   set prod(value: Product) {
     this.product = value;
+
+    //on initialise le coût d'achat
+    this.maxAchat = this.product.cout;
+
+    if (this.product.managerUnlocked && this.product.timeleft > 0) {
+      this.lastupdate = Date.now();
+      this.progress = (this.product.vitesse - this.product.timeleft) / this.product.vitesse;
+      this.bar.animate(1, { duration: this.progress });
+    }
   }
 
-  //on récupère les gains du joueur 
   _money: number;
   @Input()
   set money(value: number) {
@@ -32,6 +52,7 @@ export class ProductComponent implements OnInit {
   }
 
   @Output() notifyProduction: EventEmitter<Product> = new EventEmitter<Product>();
+  @Output() notifyMoney: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() { }
 
@@ -90,6 +111,35 @@ export class ProductComponent implements OnInit {
       this.startFabrication();
     }
   }
+
+  calcMaxCanBuy(): number {
+    let quantiteMax: number = 0;
+    if(this.product.cout*this.product.croissance <= this._money){
+      let calPrelem = (this.product.cout - (this._money*(1-this.product.croissance)))/this.product.cout;
+      let quant = (Math.log(calPrelem))/Math.log(this.product.croissance);
+      quantiteMax = Math.trunc(quant-1);
+      if(isNaN(quantiteMax)){
+        quantiteMax = 0;
+      }
+      
+    }
+    return quantiteMax;
+  }
+
+  achatProduct() {
+    
+    if (this._qtmulti <= this.calcMaxCanBuy()) {
+      var coutAchat = 0;
+      for(let i=0;i<this._qtmulti;i++){
+        this.maxAchat = this.maxAchat*this.product.croissance;
+        coutAchat = coutAchat + this.maxAchat;
+      }
+      this.notifyMoney.emit(coutAchat);
+      this.product.quantite = this.product.quantite + this._qtmulti;
+    }
+  }
+
+  
 
 
 

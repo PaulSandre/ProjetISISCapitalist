@@ -9,253 +9,248 @@ and open the template in the editor.
 <world
     xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
     xsi:noNamespaceSchemaLocation='jaxb/world/worldSchema.xsd'>
-    <name>Dealer</name>
+    <name>New Orleans</name>
     <logo></logo>
     <money>15</money>
     <score>15</score>
     <totalangels>1</totalangels>
     <activeangels>1</activeangels>
     <angelbonus>2</angelbonus>
-    <lastupdate>0</lastupdate>
-    
-    <!--*****************************PRODUCTS**************************** -->
+    <lastupdate>27/02/2020</lastupdate>
     <products>
         <product>
             <id>1</id>
-            <name>Cannabis</name>
-            <logo>icones\weed.png</logo>
+            <name>Saxophonist</name>
+            <logo>icones/saxophone.jpg</logo>
             <cout>4</cout>
             <croissance>2</croissance>
             <revenu>3</revenu>
             <vitesse>25</vitesse>
             <quantite>15</quantite>
-            <timeleft>2000</timeleft>
+            <timeleft>200</timeleft>
             <managerUnlocked>false</managerUnlocked>
             <palliers>
+                <pallier>
+                    <name>Unlock A1</name>
+                    <logo></logo>
+                    <seuil>30</seuil>
+                    <idcible>0</idcible>
+                    <ratio>1.2</ratio>
+                    <typeratio>vitesse</typeratio>
+                    <unlocked>false</unlocked>
+                </pallier>
+                <pallier>
+                    <name>Unlock B1</name>
+                    <logo></logo>
+                    <seuil>25</seuil>
+                    <idcible>0</idcible>
+                    <ratio>1.5</ratio>
+                    <typeratio>gain</typeratio>
+                    <unlocked>false</unlocked>
+                </pallier>
             </palliers>
         </product>
         <product>
             <id>2</id>
-            <name>Cocaine</name>
-            <logo>icones\coke.jpg</logo>
+            <name>Pianist</name>
+            <logo>icones/piano.jpg</logo>
             <cout>60</cout>
             <croissance>1,15</croissance>
             <revenu>60</revenu>
             <vitesse>8</vitesse>
-            <quantite>10</quantite>
+            <quantite>12</quantite>
             <timeleft>300</timeleft>
-            <managerUnlocked>false</managerUnlocked>
+            <managerUnlocked>15000</managerUnlocked>
             <palliers>
+                <pallier>
+                    <name>Unlock A2</name>
+                    <logo></logo>
+                    <seuil>30</seuil>
+                    <idcible>0</idcible>
+                    <ratio>1.2</ratio>
+                    <typeratio>vitesse</typeratio>
+                    <unlocked>false</unlocked>
+                </pallier>
+                <pallier>
+                    <name>Unlock B2</name>
+                    <logo></logo>
+                    <seuil>25</seuil>
+                    <idcible>0</idcible>
+                    <ratio>1.5</ratio>
+                    <typeratio>gain</typeratio>
+                    <unlocked>false</unlocked>
+                </pallier>
             </palliers>
         </product>
-        <product>
-        </product>
     </products>
-    <!--*****************************ALL PALLIER**************************** -->
     <allunlocks>
-        
-        <!--********pallier cannabis********** -->
         <pallier>
-            <name>La main verte</name>
-            <logo>icones\cannabis.png</logo>
-            <seuil>25</seuil>
-            <idcible>1</idcible>
+            <name>Unlock 1</name>
+            <logo></logo>
+            <seuil>10</seuil>
+            <idcible>0</idcible>
             <ratio>2</ratio>
-            <typeratio>VITESSE</typeratio>
+            <typeratio>vitesse</typeratio>
             <unlocked>false</unlocked>
         </pallier>
         <pallier>
-            <name>Champ de cannabis</name>
-            <logo>icones\cannabis.png</logo>
-            <seuil>50</seuil>
-            <idcible>1</idcible>
+            <name>Unlock 2</name>
+            <logo></logo>
+            <seuil>16</seuil>
+            <idcible>0</idcible>
             <ratio>2</ratio>
-            <typeratio>VITESSE</typeratio>
+            <typeratio>gain</typeratio>
             <unlocked>false</unlocked>
         </pallier>
         <pallier>
-            <name>Ferme de cannabis</name>
-            <logo>icones\cannabis.png</logo>
-            <seuil>100</seuil>
-            <idcible>1</idcible>
-            <ratio>2</ratio>
-            <typeratio>VITESSE</typeratio>
-            <unlocked>false</unlocked>
-        </pallier>
-        
-        <!--********pallier cocaine********** -->
-        <pallier>
-            <name>Boulanger</name>
-            <logo>icones\coke.png</logo>
-            <seuil>25</seuil>
-            <idcible>2</idcible>
-            <ratio>2</ratio>
-            <typeratio>VITESSE</typeratio>
-            <unlocked>false</unlocked>
-        </pallier>
-        <pallier>
-            <name>Suivre a la trace</name>
-            <logo>icones\coke.png</logo>
-            <seuil>50</seuil>
-            <idcible>2</idcible>
-            <ratio>2</ratio>
-            <typeratio>VITESSE</typeratio>
-            <unlocked>false</unlocked>
-        </pallier>
-        <pallier>
-            <name>Le Roi de l'amidon</name>
-            <logo>icones\coke.png</logo>
-            <seuil>100</seuil>
-            <idcible>2</idcible>
-            <ratio>2</ratio>
-            <typeratio>VITESSE</typeratio>
-            <unlocked>false</unlocked>
-        </pallier>
-        
-        <!--********pallier champignons********** -->
-        <pallier>
-            <name>Arpenteur de forets</name>
-            <logo>icones\mushroom.png</logo>
-            <seuil>25</seuil>
-            <idcible>3</idcible>
-            <ratio>2</ratio>
-            <typeratio>VITESSE</typeratio>
-            <unlocked>false</unlocked>
-        </pallier>
-        <pallier>
-            <name>Genocide de Toad</name>
-            <logo>icones\mushroom.png</logo>
-            <seuil>50</seuil>
-            <idcible>3</idcible>
-            <ratio>2</ratio>
-            <typeratio>VITESSE</typeratio>
-            <unlocked>false</unlocked>
-        </pallier>
-        <pallier>
-            <name>CHAMPagne</name>
-            <logo>icones\mushroom.png</logo>
-            <seuil>100</seuil>
-            <idcible>3</idcible>
-            <ratio>2</ratio>
-            <typeratio>VITESSE</typeratio>
+            <name>Unlock 3</name>
+            <logo></logo>
+            <seuil>20</seuil>
+            <idcible>0</idcible>
+            <ratio>1</ratio>
+            <typeratio>ange</typeratio>
             <unlocked>false</unlocked>
         </pallier>
     </allunlocks>
-    
-    <!--*****************************CASH UPGRADES**************************** -->
-    <upgrades>
-        <upgrade>
-            <name>cu_cannabis_1</name>
-            <logo>icones\cannabis.png</logo>
-            <seuil>250000</seuil>
-            <idcible>1</idcible>
-            <ratio>3</ratio>
-            <typeratio>GAIN</typeratio>
-            <unlocked>false</unlocked>
-        </upgrade>
-        <upgrade>
-            <name>cu_cannabis_2</name>
-            <logo>icones\cannabis.png</logo>
-            <seuil>500000</seuil>
-            <idcible>1</idcible>  
-            <ratio>3</ratio>
-            <typeratio>GAIN</typeratio>
-            <unlocked>false</unlocked>
-        </upgrade>
-        
-        <upgrade>
-            <name>cu_cocaine_1</name>
-            <logo>icones\cocaine.png</logo>
-            <seuil>1000000</seuil>
-            <idcible>2</idcible>  
-            <ratio>3</ratio>
-            <typeratio>GAIN</typeratio>
-            <unlocked>false</unlocked>
-        </upgrade>
-        <upgrade>
-            <name>cu_cocaine_2</name>
-            <logo>icones\cocaine.png</logo>
-            <seuil>250000</seuil>
-            <idcible>2</idcible>
-            <ratio>3</ratio>
-            <typeratio>GAIN</typeratio>
-            <unlocked>false</unlocked>
-        </upgrade>
-        
-        <upgrade>
-            <name>cu_champignon_1</name>
-            <logo>icones\mushroom.png</logo>
-            <seuil>5000000</seuil>
-            <idcible>3</idcible>  
-            <ratio>3</ratio>
-            <typeratio>GAIN</typeratio>
-            <unlocked>false</unlocked>
-        </upgrade>
-        <upgrade>
-            <name>cu_champignon_2</name>
-            <logo>icones\mushroom.png</logo>
-            <seuil>10000000</seuil>
-            <idcible>3</idcible>  
-            <ratio>3</ratio>
-            <typeratio>GAIN</typeratio>
-            <unlocked>false</unlocked>
-        </upgrade>
-    </upgrades>
-    
-    <!--*****************************ANGEL UPGRADES**************************** -->
     <angelupgrades>
-        <angelupgrade>
-            <name>Angel Sacrifice</name>
-            <logo>icones\devil.png</logo>
-            <seuil>10000</seuil>
-            <idcible>0</idcible>  <!-- "0" car ameliore la production de tous les produits -->
-            <ratio>3</ratio>
-            <typeratio>GAIN</typeratio>
-            <unlocked>false</unlocked>
-        </angelupgrade>
-        <angelupgrade>
-            <name>Angelic Mutinity</name>
-            <logo>icones\devil.png</logo>
-            <seuil>100000</seuil>
-            <idcible>1</idcible> <!-- "-1" car améliore l'efficacite des anges -->
+        <pallier>
+            <name>Angel Upgrades 1</name>
+            <logo></logo>
+            <seuil>120000</seuil>
+            <idcible>0</idcible>
             <ratio>2</ratio>
-            <typeratio>ANGE</typeratio>
+            <typeratio>ange</typeratio>
             <unlocked>false</unlocked>
-        </angelupgrade>
-        <angelupgrade>
-            <name>Angelic Rebellion</name>
-            <logo>icones\devil.png</logo>
-            <seuil>100000000</seuil>
-            <idcible>1</idcible> <!-- "-1" car améliore l'efficacite des anges -->
+        </pallier>
+        <pallier>
+            <name>Angel Upgrades 2</name>
+            <logo></logo>
+            <seuil>240000</seuil>
+            <idcible>0</idcible>
             <ratio>2</ratio>
-            <typeratio>ANGE</typeratio>
+            <typeratio>ange</typeratio>
             <unlocked>false</unlocked>
-        </angelupgrade>
+        </pallier>
+        <pallier>
+            <name>Angel Upgrades 3</name>
+            <logo></logo>
+            <seuil>480000</seuil>
+            <idcible>0</idcible>
+            <ratio>2</ratio>
+            <typeratio>ange</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
     </angelupgrades>
-    
-    <!--*****************************MANAGERS**************************** -->
     <managers>
-        <manager>
-            <name>Koba la D</name>
-            <logo>icones\koba.jpg</logo>
+        <pallier>
+            <name>John Coltrane</name>
+            <logo>icones/coltrane.jpg</logo>
             <seuil>1000</seuil>
             <idcible>1</idcible>
+            <ratio></ratio>
+            <typeratio></typeratio>
             <unlocked>false</unlocked>
-        </manager>
-        <manager>
-            <name>Ninho</name>
-            <logo>icones\ninho.jpg</logo>
+        </pallier>
+        <pallier>
+            <name>Ray Charles</name>
+            <logo>icones/charles.jpg</logo>
             <seuil>15000</seuil>
             <idcible>2</idcible>
+            <ratio></ratio>
+            <typeratio></typeratio>
             <unlocked>false</unlocked>
-        </manager>
-        <manager>
-            <name>Jul</name>
-            <logo>icones\jul.jpg</logo>
-            <seuil>100000</seuil>
-            <idcible>3</idcible> 
-            <unlocked>false</unlocked>
-        </manager>
+        </pallier>
     </managers>
-
+    <upgrades>
+        <pallier>
+            <name>Cash Upgrades 1</name>
+            <logo></logo>
+            <seuil>100</seuil>
+            <idcible>1</idcible>
+            <ratio>2</ratio>
+            <typeratio>vitesse</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Cash Upgrades 2</name>
+            <logo></logo>
+            <seuil>1000</seuil>
+            <idcible>1</idcible>
+            <ratio>2</ratio>
+            <typeratio>vitesse</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Cash Upgrades 3</name>
+            <logo></logo>
+            <seuil>3000</seuil>
+            <idcible>2</idcible>
+            <ratio>2</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Cash Upgrades 4</name>
+            <logo></logo>
+            <seuil>6000</seuil>
+            <idcible>1</idcible>
+            <ratio>2</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Cash Upgrades 5</name>
+            <logo></logo>
+            <seuil>12000</seuil>
+            <idcible>1</idcible>
+            <ratio>2</ratio>
+            <typeratio>vitesse</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Cash Upgrades 6</name>
+            <logo></logo>
+            <seuil>15000</seuil>
+            <idcible>1</idcible>
+            <ratio>2</ratio>
+            <typeratio>vitesse</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Cash Upgrades 7</name>
+            <logo></logo>
+            <seuil>20000</seuil>
+            <idcible>2</idcible>
+            <ratio>2</ratio>
+            <typeratio>vitesse</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Cash Upgrades 8</name>
+            <logo></logo>
+            <seuil>30000</seuil>
+            <idcible>1</idcible>
+            <ratio>2</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Cash Upgrades 9</name>
+            <logo></logo>
+            <seuil>60000</seuil>
+            <idcible>2</idcible>
+            <ratio>2</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Cash Upgrades 10</name>
+            <logo></logo>
+            <seuil>120000</seuil>
+            <idcible>1</idcible>
+            <ratio>2</ratio>
+            <typeratio>vitesse</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+    </upgrades>
 </world>
