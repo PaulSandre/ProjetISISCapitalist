@@ -48,7 +48,7 @@ export class ProductComponent implements OnInit {
 
       if (this.product.managerUnlocked && this.product.timeleft > 0) {
         this.lastupdate = Date.now();
-        this.progress = (this.product.vitesse - this.product.timeleft) / this.product.vitesse;
+       this.progress = (this.product.vitesse - this.product.timeleft) / this.product.vitesse;
         this.bar.animate(1, { duration: this.progress });
       }
     }
@@ -62,6 +62,8 @@ export class ProductComponent implements OnInit {
 
   @Output() notifyProduction: EventEmitter<Product> = new EventEmitter<Product>();
   @Output() notifyMoney: EventEmitter<number> = new EventEmitter<number>();
+  @Output() notifyAchat: EventEmitter<Product> = new EventEmitter<Product>();
+
 
   constructor() { }
 

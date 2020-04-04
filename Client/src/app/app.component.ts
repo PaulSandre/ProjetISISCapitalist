@@ -41,6 +41,7 @@ export class AppComponent {
   disponibiliteManager(): void {
     this.dispoManager = false;
     this.world.managers.pallier.forEach(val => {
+      console.log(val);
       if (!this.dispoManager) {
         if (this.world.money > val.seuil && !val.unlocked) {
           this.dispoManager = true;
@@ -87,9 +88,12 @@ export class AppComponent {
           }
         });
         this.notifyService.showSuccess("Achat de " + m.name + " effectué", "Manager")
+        //this.service.putManager(m);
 
       
       }
     }
+
+    
   
 }
