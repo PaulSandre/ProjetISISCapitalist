@@ -3,12 +3,12 @@
     <div class="col-md-4">
       <span><img src="../assets/jazz.jpg" class="rounded-circle round" /> </span>
       <span style="margin-left: 10px; color: aliceblue;" class="txt text-uppercase font-weight-bold text-monospace"
-        id="worldname"> {{world.name}}
+        id="worldname"> {{world?.name}}
       </span>
     </div>
     <div class="col-md-4 text-center txt" style="padding-top: 25px;">
       <div class="money rounded">
-        <span>$</span><span [innerHTML]="world.money | bigvalue"></span>
+        <span>$</span><span [innerHTML]="world?.money | bigvalue"></span>
       </div>
     </div>
     <div class="col-md-4">
@@ -35,10 +35,10 @@
     </div>
     <div class="col-md-10">
       <div style="margin-right: 80px; margin-left: 20px;" class="row">
-        <app-product [money]="world.money" [qtmulti]="qtmulti" (notifyMoney)="onAchatDone($event)"
+        <app-product [money]="world?.money" [qtmulti]="qtmulti" (notifyMoney)="onAchatDone($event)"
           (notifyProduction)="onProductionDone($event)" [prod]="world.products.product[0]"
           class="product col-md-5 shadow p-3 mb-5 bg-dark rounded"></app-product>
-        <app-product [money]="world.money" [qtmulti]="qtmulti" (notifyMoney)="onAchatDone($event)"
+        <app-product [money]="world?.money" [qtmulti]="qtmulti" (notifyMoney)="onAchatDone($event)"
           (notifyProduction)="onProductionDone($event)" [prod]="world.products.product[1]"
           class="product col-md-5 offset-md-2 shadow p-3 mb-5 bg-dark rounded">
         </app-product>
@@ -51,7 +51,7 @@
       <h4 class="modal-title">Managers</h4>
     </div>
     <div class="app-modal-body">
-      <div *ngFor="let manager of world.managers.pallier">
+      <div *ngFor="let manager of world?.managers?.pallier">
         <div *ngIf="!manager.unlocked" class="row rounded notif">
           <div class="col-md-4">
             <span>
@@ -65,7 +65,7 @@
           </div>
           <div class="col-md-3">
             <button style="height: 100px; width: 100px;" class="btn btn-primary" (click)="achatManager(manager)"
-              [disabled]="world.money < manager.seuil">Hire!</button>
+              [disabled]="world?.money < manager.seuil">Hire!</button>
           </div>
         </div>
       </div>

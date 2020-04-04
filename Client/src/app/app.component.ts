@@ -86,7 +86,6 @@ export class AppComponent {
             this.world.products.product[this.world.products.product.indexOf(element)].managerUnlocked = true;
           }
         });
-        this.service.putManager(m);
         this.notifyService.showSuccess("Achat de " + m.name + " effectué", "Manager")
 
       

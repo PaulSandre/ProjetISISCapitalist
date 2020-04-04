@@ -11,8 +11,8 @@ and open the template in the editor.
     xsi:noNamespaceSchemaLocation='jaxb/world/worldSchema.xsd'>
     <name>New Orleans</name>
     <logo></logo>
-    <money>15</money>
-    <score>15</score>
+    <money>200000</money>
+    <score>200000</score>
     <totalangels>0</totalangels>
     <activeangels>0</activeangels>
     <angelbonus>2</angelbonus>
@@ -23,7 +23,7 @@ and open the template in the editor.
             <name>Saxophonist</name>
             <logo>icones/saxophone.jpg</logo>
             <cout>4</cout>
-            <croissance>2</croissance>
+            <croissance>1.07</croissance>
             <revenu>3</revenu>
             <vitesse>500</vitesse>
             <quantite>0</quantite>
@@ -55,7 +55,7 @@ and open the template in the editor.
             <name>Pianist</name>
             <logo>icones/piano.jpg</logo>
             <cout>60</cout>
-            <croissance>1,15</croissance>
+            <croissance>1.15</croissance>
             <revenu>60</revenu>
             <vitesse>2500</vitesse>
             <quantite>0</quantite>

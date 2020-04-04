@@ -23,12 +23,10 @@ export class RestserviceService {
     return this.server;
   }
 
-  public putManager(manager: Pallier): Promise<Response> {
-    // console.log(upgrade);
-     return this.http
-       .put(this.server + "generic/manager", manager,)
-       .toPromise()
-       .then(response => response)
-       .catch(this.handleError);
-   }
+  putManager(manager: Pallier): Promise<Response> {
+    return this.http.put(this.server + "adventureisis/generic/manager", manager)
+      .toPromise()
+      .then(response => response)
+      .catch(this.handleError);
+  }
 }
