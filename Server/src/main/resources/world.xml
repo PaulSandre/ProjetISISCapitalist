@@ -13,10 +13,10 @@ and open the template in the editor.
     <logo></logo>
     <money>15</money>
     <score>15</score>
-    <totalangels>1</totalangels>
-    <activeangels>1</activeangels>
+    <totalangels>0</totalangels>
+    <activeangels>0</activeangels>
     <angelbonus>2</angelbonus>
-    <lastupdate>27/02/2020</lastupdate>
+    <lastupdate></lastupdate>
     <products>
         <product>
             <id>1</id>
@@ -25,9 +25,9 @@ and open the template in the editor.
             <cout>4</cout>
             <croissance>2</croissance>
             <revenu>3</revenu>
-            <vitesse>25</vitesse>
-            <quantite>15</quantite>
-            <timeleft>200</timeleft>
+            <vitesse>500</vitesse>
+            <quantite>0</quantite>
+            <timeleft>0</timeleft>
             <managerUnlocked>false</managerUnlocked>
             <palliers>
                 <pallier>
@@ -57,9 +57,9 @@ and open the template in the editor.
             <cout>60</cout>
             <croissance>1,15</croissance>
             <revenu>60</revenu>
-            <vitesse>8</vitesse>
-            <quantite>12</quantite>
-            <timeleft>300</timeleft>
+            <vitesse>2500</vitesse>
+            <quantite>0</quantite>
+            <timeleft>0</timeleft>
             <managerUnlocked>15000</managerUnlocked>
             <palliers>
                 <pallier>
