@@ -10,6 +10,13 @@ export class RestserviceService {
   server = 'http://localhost:8080/';
   user = '';
 
+  public getUser(): string {
+    return this.user;
+  }
+  public setUser(user: string) {
+    this.user = user;
+  }
+
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);

@@ -25,6 +25,11 @@
             <span>Max</span>
           </button>
         </div>
+        <div class="col-md-7" style="margin-top: 11px;">
+          <span class="row">Your ID : </span>
+          <input type="text" style="width: 160px; padding-left: 12px;" class="row border border-success rounded"
+            [(ngModel)]="username" (change)="onUsernameChanged()" />
+        </div>
       </div>
     </div>
   </div>

@@ -88,10 +88,25 @@ export class AppComponent {
           }
         });
         this.notifyService.showSuccess("Achat de " + m.name + " effectué", "Manager")
-        //this.service.putManager(m);
+        this.service.putManager(m);
 
       
       }
+      
+    }
+
+    onUsernameChanged(): void {
+      localStorage.setItem("username", this.username);
+      this.service.setUser(this.username);
+    }
+    //ici on crée le nom d'utilisateur s'il n'exite pas et l'enregistre dans le serveur
+    createUsername(): void {
+      this.username = localStorage.getItem("username");
+      if (this.username == '') {
+        this.username = 'Captain' + Math.floor(Math.random() * 10000);
+        localStorage.setItem("username", this.username);
+      }
+      this.service.setUser(this.username);
     }
 
     
