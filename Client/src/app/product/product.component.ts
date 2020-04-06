@@ -46,7 +46,7 @@ export class ProductComponent implements OnInit {
       //on initialise le coût d'achat
       this.maxAchat = this.product.cout;
 
-      if (this.product.managerUnlocked && this.product.timeleft > 0) {
+      if (this.product.managerUnlocked && this.product.timeleft > 0 && this.bar) {
         if (this.product.quantite >= 1) {
           this.lastupdate = Date.now();
           this.progress = (this.product.vitesse - this.product.timeleft) / this.product.vitesse;
@@ -111,7 +111,7 @@ export class ProductComponent implements OnInit {
 
   calcScore() {
     if (this.product) {
-      if (this.product.timeleft > 0) {
+      if (this.product.timeleft > 0 && this.bar) {
         this.product.timeleft = this.product.timeleft - (Date.now() - this.lastupdate);
         this.lastupdate = Date.now();
         this.bar.animate(1, { duration: this.product.timeleft });

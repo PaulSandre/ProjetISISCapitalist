@@ -5,14 +5,9 @@
  */
 package com.example.com.isis.adventureISIServer.classes;
 
-import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
-import static javax.swing.text.html.FormSubmitEvent.MethodType.GET;
 import javax.ws.rs.GET;
-import javax.ws.rs.GET;
-import static javax.ws.rs.HttpMethod.PUT;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -23,7 +18,7 @@ import javax.xml.bind.JAXBException;
 
 /**
  *
- * @author ejaffre
+ * @author psandre
  */
 @Path("generic")
 public class Webservice {
@@ -34,16 +29,25 @@ public class Webservice {
         services = new Services();
     }
 
-    @GET
+  @GET
     @Path("world")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Response getWorld() throws JAXBException, IOException {
-        return Response.ok(services.getWorld()).build();
+    public Response getXml(@Context HttpServletRequest request) throws JAXBException, IOException {
+        String username = request.getHeader("X-User");
+        return Response.ok(services.getWorld(username)).build();
+    }
+
+    @PUT
+    @Path("product")
+    public void putProduct(@Context HttpServletRequest request, ProductType product) throws JAXBException, IOException {
+        String username = request.getHeader("X-user");
+        services.updateProduct(username, product);
     }
 
     @PUT
     @Path("manager")
     public void putManager(@Context HttpServletRequest request, PallierType manager) throws JAXBException, IOException {
-        services.updateManager(manager);
+        String username = request.getHeader("X-user");
+        services.updateManager(username, manager);
     }
 }
