@@ -22,13 +22,14 @@ export class AppComponent {
 
  
  
-  constructor(private service: RestserviceService,private notifyService: NotificationService, private http: HttpClient, ) {
-    this.server = service.getServer();
-    service.getWorld().then(
+  constructor(private service: RestserviceService, private notifyService: NotificationService) {
+    this.server = 'http://localhost:8080/';
+    this.createUsername();
+    service.getWorld().then(world => {
+      console.log(world);
+      this.world = world;
+    });
 
-      world => {
-        this.world = world;
-      });
   }
 
   ngOnInit(): void {
@@ -93,6 +94,11 @@ export class AppComponent {
       
       }
       
+    }
+
+    onNotifyPurchase(data) {
+      this.world.money -= data.cout;
+      this.service.putProduit(data.product);
     }
 
     onUsernameChanged(): void {

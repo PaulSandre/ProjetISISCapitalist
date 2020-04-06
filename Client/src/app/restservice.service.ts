@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
-import { World, Pallier} from './world';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { World, Pallier, Product } from './world';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestserviceService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
   server = 'http://localhost:8080/';
   user = '';
 
@@ -21,19 +21,46 @@ export class RestserviceService {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   }
-  getWorld(): Promise<World> {
-    return this.http.get(this.server + 'adventureisis/generic/world')
-      .toPromise().catch(this.handleError);
-  }
 
-  getServer(): string{
+  getWorld(): Promise<World> {
+    return this.http
+      .get(this.server + "adventureisis/generic/world", {
+        headers: this.setHeaders(this.getUser())
+      })
+      .toPromise().then(response => response)
+      .catch(this.handleError);
+  }
+   
+
+
+ 
+
+  getServer(): string {
     return this.server;
   }
 
   putManager(manager: Pallier): Promise<Response> {
-    return this.http.put(this.server + "adventureisis/generic/manager", manager)
+    return this.http.put(this.server + "adventureisis/generic/manager", manager, {
+      headers: { "X-user": this.getUser() }
+    })
       .toPromise()
       .then(response => response)
       .catch(this.handleError);
   }
+
+  public putProduit(product: Product): Promise<Response> {
+    //console.log(product);
+    return this.http
+      .put(this.server + "adventureisis/generic/product", product, {
+        headers: { "X-user": this.getUser() }
+      })
+      .toPromise()
+      .then(response => response)
+      .catch(this.handleError);
+  }
+
+  private setHeaders(user: string): HttpHeaders {
+    var headers = new HttpHeaders({ 'X-User': user });
+    return headers;
+  };
 }

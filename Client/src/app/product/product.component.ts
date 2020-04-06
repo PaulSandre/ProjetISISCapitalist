@@ -47,9 +47,11 @@ export class ProductComponent implements OnInit {
       this.maxAchat = this.product.cout;
 
       if (this.product.managerUnlocked && this.product.timeleft > 0) {
-        this.lastupdate = Date.now();
-       this.progress = (this.product.vitesse - this.product.timeleft) / this.product.vitesse;
-        this.bar.animate(1, { duration: this.progress });
+        if (this.product.quantite >= 1) {
+          this.lastupdate = Date.now();
+          this.progress = (this.product.vitesse - this.product.timeleft) / this.product.vitesse;
+          this.bar.animate(1, { duration: this.progress });
+        }
       }
     }
   }
@@ -62,7 +64,7 @@ export class ProductComponent implements OnInit {
 
   @Output() notifyProduction: EventEmitter<Product> = new EventEmitter<Product>();
   @Output() notifyMoney: EventEmitter<number> = new EventEmitter<number>();
-  @Output() notifyAchat: EventEmitter<Product> = new EventEmitter<Product>();
+  @Output() public notifyPurchase = new EventEmitter();
 
 
   constructor() { }
@@ -170,7 +172,7 @@ export class ProductComponent implements OnInit {
 
   //Calcul du coup d'achat d'un produit
   achatProduct() {
-    this.coutAchat2 = 0;
+    this.coutAchat = 0;
     if (this._qtmulti <= this.calcMaxCanBuy()) {
       for (let y = 0; y < this.product.quantite; y++) {
         this.coutAchat = this.coutAchat + this.product.cout * this.product.croissance ** (y);
@@ -183,6 +185,7 @@ export class ProductComponent implements OnInit {
       //calcul du cout de la nouvelle demande
       let EmissionCout = this.cout - this.coutAchat;
       //calcul de la nouvelle quantite
+      this.notifyPurchase.emit({ cout: this.coutAchat, product: this.product });
       this.product.quantite = this.product.quantite + this._qtmulti;
       this.notifyMoney.emit(EmissionCout);
     }
