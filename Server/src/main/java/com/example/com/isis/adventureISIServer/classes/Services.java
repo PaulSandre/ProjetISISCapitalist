@@ -234,6 +234,30 @@ public class Services {
             product.setQuantite(newproduct.getQuantite());
             System.out.println("newproductqte: " + newproduct.getQuantite());
         }
+         //partie sur les unlocks
+        List<PallierType> listePalliers = (List<PallierType>) product.getPalliers().getPallier();
+        for (PallierType unlock : listePalliers) {
+            //Si l'unlock n'est pas encore débloqué et qu'il y assez de produits pour le débloquer :
+            if (unlock.isUnlocked() == false && product.getQuantite() >= unlock.getSeuil()) {
+                unlockUnlock(unlock, product);
+                System.out.println(" débloqué !!!!!");
+                
+            }
+
+        }
+        //ALLUNLOCKS
+        int minqtite = findMinQtite(world, newproduct.getId());
+        System.out.println("Qité minimale : " + minqtite);
+        List<PallierType> listeAllunlock = (List<PallierType>) world.getAllunlocks().getPallier();
+        for (PallierType allUnlock : listeAllunlock) {
+            if (allUnlock.isUnlocked() == false && minqtite >= allUnlock.getSeuil()) {
+                System.out.println("AllUnlock débloqué !!!!!");
+                List<ProductType> listeProduits = (List<ProductType>) world.getProducts().getProduct();
+                for (ProductType produit : listeProduits) {
+                    unlockUnlock(allUnlock, produit);
+                }
+            }
+        }
        
 
         //System.out.println("quantité minimale = " + minqtite);
@@ -241,6 +265,22 @@ public class Services {
         saveWorldToXml(world, username);
         System.out.println("money apres prod : "+world.getMoney());
         return true;
+    }
+    
+    public int findMinQtite(World world, int id) {
+        ProductType pt = null;
+        int qtite = 0;
+        ArrayList<Integer> listeQtite = new ArrayList<Integer>();
+        List<ProductType> listeProduits = (List<ProductType>) world.getProducts().getProduct();
+        for (ProductType produit : listeProduits) {
+            //if (qtite>=produit.getQuantite()){
+            //    qtite=produit.getQuantite();
+            //}
+            listeQtite.add(produit.getQuantite());
+        }
+        qtite = Collections.min(listeQtite);
+        listeQtite.clear();
+        return qtite;
     }
     // prend en paramètre le pseudo du joueur et le manager acheté.
     // renvoie false si l’action n’a pas pu être traitée
@@ -271,6 +311,30 @@ public class Services {
         saveWorldToXml(world, username);
         return true;
     }
+    
+     public void unlockUnlock(PallierType unlock, ProductType product) {
+
+        //on passe à true la propriété du unlock
+        unlock.setUnlocked(true);
+        //si c'est un unlock de vitesse : on met à jour la nouvelle vitesse de création
+        if (unlock.getTyperatio() == TyperatioType.VITESSE) {
+            int vitesse = product.getVitesse();
+            vitesse = (int) (vitesse / unlock.getRatio());
+            product.setVitesse(vitesse);
+            System.out.println("vitesse"+vitesse);
+            //mise à jour du timeleft si un produit est en prod
+            if (product.getTimeleft() > 0) {
+                product.setTimeleft((long) (product.getTimeleft() / unlock.getRatio()));
+            }
+        } //si c'est un unlock de gain : on met à jour le nouveau revenu du produit
+        else if (unlock.getTyperatio() == TyperatioType.GAIN) {
+            double revenu = product.getRevenu();
+            revenu = revenu * unlock.getRatio();
+            product.setRevenu(revenu);
+        }
+
+    }
+    
 
     
     

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
-import { Product } from '../world';
+import { Product,Pallier} from '../world';
 import { NotificationService } from '../notification.service';
 
 
@@ -193,6 +193,24 @@ export class ProductComponent implements OnInit {
       this.notifyPurchase.emit( EmissionCout);
       this.product.quantite = this.product.quantite + this._qtmulti;
       this.notifyAchat.emit(this.product);
+      this.product.palliers.pallier.forEach(value => {
+        if (!value.unlocked && this.product.quantite > value.seuil) {
+          this.product.palliers.pallier[this.product.palliers.pallier.indexOf(value)].unlocked = true;
+          this.calcUpgrade(value);
+          this.notifyService.showSuccess("déblocage d'un bonus " + value.typeratio + " effectué pour " + this.product.name, "Unlock produit")
+        }
+      })
+    }
+  }
+
+  calcUpgrade(pallier: Pallier) {
+    switch (pallier.typeratio) {
+      case 'vitesse':
+        this.product.vitesse = this.product.vitesse / pallier.ratio;
+        break;
+      case 'gain':
+        this.product.revenu = this.product.revenu * pallier.ratio;
+        break;
     }
   }
 

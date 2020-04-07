@@ -14,13 +14,13 @@
     <div class="col-md-4">
       <div class="txt row">
         <div class="col-md-5">
-          <button style="height: 100px; width: 155px; font-size: 20px; white-space: nowrap; " *ngIf="qtmulti!=100000" class="btn btn-info"
-            (click)="commutateur()">
+          <button style="height: 100px; width: 155px; font-size: 20px; white-space: nowrap; " *ngIf="qtmulti!=100000"
+            class="btn btn-info" (click)="commutateur()">
             <span>Buy</span><br />
             <span>x{{qtmulti}}</span>
           </button>
-          <button style="height: 100px; width: 155px; font-size: 20px;white-space: nowrap; " *ngIf="qtmulti==100000" class="btn btn-info"
-            (click)="commutateur()">
+          <button style="height: 100px; width: 155px; font-size: 20px;white-space: nowrap; " *ngIf="qtmulti==100000"
+            class="btn btn-info" (click)="commutateur()">
             <span>Buy</span><br />
             <span>Max</span>
           </button>
@@ -37,15 +37,20 @@
     <div style="line-height: 100em;" class="col-md-2">
       <button class="button btn btn-info btn-block" data-toggle="modal" (click)="managersModal.show()"><span
           *ngIf="dispoManager" class="badge text-warning">New</span>Managers</button>
+      <button class="button btn btnCltr btn-success btn-block" data-toggle="modal"
+        (click)="unlockModal.show()">Unlocks</button>
+      <button class="button btn btnCltr btn-success btn-block" data-toggle="modal" (click)="upgradModal.show()"><span
+          *ngIf="dispoUpgrad" class="badge text-warning">New</span>Cash
+        Upgrades</button>
     </div>
     <div class="col-md-10">
       <div style="margin-right: 80px; margin-left: 20px;" class="row">
-        <app-product [money]="world?.money" [qtmulti]="qtmulti" 
-          (notifyProduction)="onProductionDone($event)" (notifyPurchase)="onNotifyPurchase($event)" (notifyAchat)="onNotifyAchat($event)" [prod]="world.products.product[0]"
-          class="product col-md-5 shadow p-3 mb-5 bg-dark rounded"></app-product>
-        <app-product [money]="world?.money" [qtmulti]="qtmulti" 
-          (notifyProduction)="onProductionDone($event)" (notifyPurchase)="onNotifyPurchase($event)" (notifyAchat)="onNotifyAchat($event)" [prod]="world.products.product[1]"
-          class="product col-md-5 offset-md-2 shadow p-3 mb-5 bg-dark rounded">
+        <app-product [money]="world?.money" [qtmulti]="qtmulti" (notifyProduction)="onProductionDone($event)"
+          (notifyPurchase)="onNotifyPurchase($event)" (notifyAchat)="onNotifyAchat($event)"
+          [prod]="world.products.product[0]" class="product col-md-5 shadow p-3 mb-5 bg-dark rounded"></app-product>
+        <app-product [money]="world?.money" [qtmulti]="qtmulti" (notifyProduction)="onProductionDone($event)"
+          (notifyPurchase)="onNotifyPurchase($event)" (notifyAchat)="onNotifyAchat($event)"
+          [prod]="world.products.product[1]" class="product col-md-5 offset-md-2 shadow p-3 mb-5 bg-dark rounded">
         </app-product>
       </div>
     </div>
@@ -79,3 +84,59 @@
       <button type="button" class="btn btn-danger" (click)="managersModal.hide()">Close</button>
     </div>
   </app-modal>
+  <app-modal #unlockModal>
+    <div class="app-modal-header">
+      <h4 class="modal-title">Unlock !</h4>
+    </div>
+    <div class="app-modal-body">
+      <div class="row">
+        <div *ngFor="let unlock of world.allunlocks.pallier" class="cardUnlock card col-md-5">
+          <div *ngIf="!unlock.unlocked">
+            <div class="card-header cardHead text-uppercase font-weight-bold d-flex justify-content-center">
+              {{unlock.typeratio}}</div>
+            <div style="padding: 0;" class="card-body d-flex justify-content-center">
+              <span><img src="../assets/paris.jpg" class="imgUnlock" /></span>
+            </div>
+            <div class="card-footer bg-primary footCard text-white">
+              <span class="text-uppercase font-weight-bold row d-flex justify-content-center">{{unlock.name}}</span>
+              <div class="row">
+                <span class="col d-flex justify-content-start">x{{unlock.ratio}}</span>
+                <span class="col d-flex justify-content-end font-italic text-warning">{{unlock.seuil}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="app-modal-footer">
+      <button type="button" class="btn btn-danger" (click)="unlockModal.hide()">Close</button>
+    </div>
+  </app-modal>
+
+  <app-modal #upgradModal>
+    <div class="app-modal-header">
+      <h4 class="modal-title">Cash Upgrades !</h4>
+    </div>
+    <div class="app-modal-body">
+      <div *ngFor="let upgrade of world.upgrades.pallier">
+        <div *ngIf="!upgrade.unlocked" class="row rounded notif">
+          <div class="col-md-4">
+            <span><img src="../assets/paris.jpg" class="rounded-circle round" /> </span>
+          </div>
+          <div class="col-md-5">
+            <span class="txt2 row text-center font-weight-bold">{{upgrade.name}}</span>
+            <span class="row text-center">{{upgrade.typeratio}}</span>
+            <span class="row text-center">{{upgrade.seuil}}</span>
+          </div>
+          <div class="col-md-3">
+            <button style="height: 100px; width: 100px;" class="btn btn-primary" (click)="achatUpgrade(upgrade)"
+              [disabled]="world.money < upgrade.seuil">Buy!</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="app-modal-footer">
+      <button type="button" class="btn btn-danger" (click)="upgradModal.hide()">Close</button>
+    </div>
+  </app-modal>
+</div>

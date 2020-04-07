@@ -1,7 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { RestserviceService } from './restservice.service';
 import { World, Product, Pallier } from './world';
-import { HttpClient } from '@angular/common/http';
+import { ProductComponent } from './product/product.component'
 import { NotificationService } from './notification.service';
 
 @Component({
@@ -18,6 +18,7 @@ export class AppComponent {
   qtmulti: number = 1;
   dispoManager: boolean;
 
+  @ViewChildren(ProductComponent) public productComponent: QueryList<ProductComponent>;
   @ViewChild('bar') progressbar: any;
 
  
@@ -36,6 +37,7 @@ export class AppComponent {
     //sauvegarder le monde 
     setInterval(() => {
       this.disponibiliteManager();
+      this.bonusAllunlock()
     }, 1000);
   }
 
@@ -112,6 +114,21 @@ export class AppComponent {
         localStorage.setItem("username", this.username);
       }
       this.service.setUser(this.username);
+    }
+
+    bonusAllunlock() {
+      //on recherche la quantité minmal des produits
+      let minQuantite = Math.min(
+        ...this.productComponent.map(p => p.product.quantite)
+      )
+      this.world.allunlocks.pallier.map(value => {
+        //si la quantité minimal dépasse le seuil, on débloque le produit concerné
+        if (!value.unlocked && minQuantite >= value.seuil) {
+          this.world.allunlocks.pallier[this.world.allunlocks.pallier.indexOf(value)].unlocked = true;
+          this.productComponent.forEach(prod => prod.calcUpgrade(value))
+          this.notifyService.showSuccess("Bonus de " + value.typeratio + " effectué sur tous les produits", "Unlock");
+        }
+      })
     }
 
     
