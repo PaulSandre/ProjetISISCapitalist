@@ -196,6 +196,8 @@ public class Services {
         // que le joueur a acheté une certaine quantité de ce produit
         // sinon c’est qu’il s’agit d’un lancement de production.
         int qtchange = newproduct.getQuantite() - product.getQuantite();
+        System.out.println("newproductqte: " + newproduct.getQuantite());
+        
         if (qtchange > 0) {
             // soustraire del'argent du joueur le cout de la quantité
             // achetée et mettre à jour la quantité de product
@@ -229,6 +231,8 @@ public class Services {
         } else {
             // initialiser product.timeleft à product.vitesse pour lancer la production
             product.setTimeleft(product.getVitesse());
+            product.setQuantite(newproduct.getQuantite());
+            System.out.println("newproductqte: " + newproduct.getQuantite());
         }
        
 

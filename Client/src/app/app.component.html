@@ -40,11 +40,11 @@
     </div>
     <div class="col-md-10">
       <div style="margin-right: 80px; margin-left: 20px;" class="row">
-        <app-product [money]="world?.money" [qtmulti]="qtmulti" (notifyMoney)="onAchatDone($event)"
-          (notifyProduction)="onProductionDone($event)" (notifyPurchase)="onNotifyPurchase($event)" [prod]="world.products.product[0]"
+        <app-product [money]="world?.money" [qtmulti]="qtmulti" 
+          (notifyProduction)="onProductionDone($event)" (notifyPurchase)="onNotifyPurchase($event)" (notifyAchat)="onNotifyAchat($event)" [prod]="world.products.product[0]"
           class="product col-md-5 shadow p-3 mb-5 bg-dark rounded"></app-product>
-        <app-product [money]="world?.money" [qtmulti]="qtmulti" (notifyMoney)="onAchatDone($event)"
-          (notifyProduction)="onProductionDone($event)" (notifyPurchase)="onNotifyPurchase($event)" [prod]="world.products.product[1]"
+        <app-product [money]="world?.money" [qtmulti]="qtmulti" 
+          (notifyProduction)="onProductionDone($event)" (notifyPurchase)="onNotifyPurchase($event)" (notifyAchat)="onNotifyAchat($event)" [prod]="world.products.product[1]"
           class="product col-md-5 offset-md-2 shadow p-3 mb-5 bg-dark rounded">
         </app-product>
       </div>

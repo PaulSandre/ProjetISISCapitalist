@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { Product } from '../world';
+import { NotificationService } from '../notification.service';
 
 
 declare var require;
@@ -64,10 +65,11 @@ export class ProductComponent implements OnInit {
 
   @Output() notifyProduction: EventEmitter<Product> = new EventEmitter<Product>();
   @Output() notifyMoney: EventEmitter<number> = new EventEmitter<number>();
-  @Output() public notifyPurchase = new EventEmitter();
+  @Output() notifyPurchase: EventEmitter<number> = new EventEmitter<number>();
+  @Output() notifyAchat: EventEmitter<Product> = new EventEmitter<Product>();
 
 
-  constructor() { }
+  constructor(private notifyService: NotificationService) { }
 
 
   ngOnInit(): void {
@@ -173,6 +175,9 @@ export class ProductComponent implements OnInit {
   //Calcul du coup d'achat d'un produit
   achatProduct() {
     this.coutAchat = 0;
+    if (this.product.quantite<=0){
+      this.notifyService.showSuccess("Vous avez acheté un " + this.product.name + ". Lancez la production", "Product")
+    }
     if (this._qtmulti <= this.calcMaxCanBuy()) {
       for (let y = 0; y < this.product.quantite; y++) {
         this.coutAchat = this.coutAchat + this.product.cout * this.product.croissance ** (y);
@@ -185,9 +190,9 @@ export class ProductComponent implements OnInit {
       //calcul du cout de la nouvelle demande
       let EmissionCout = this.cout - this.coutAchat;
       //calcul de la nouvelle quantite
-      this.notifyPurchase.emit({ cout: this.coutAchat, product: this.product });
+      this.notifyPurchase.emit( EmissionCout);
       this.product.quantite = this.product.quantite + this._qtmulti;
-      this.notifyMoney.emit(EmissionCout);
+      this.notifyAchat.emit(this.product);
     }
   }
 

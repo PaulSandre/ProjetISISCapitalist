@@ -42,7 +42,6 @@ export class AppComponent {
   disponibiliteManager(): void {
     this.dispoManager = false;
     this.world.managers.pallier.forEach(val => {
-      console.log(val);
       if (!this.dispoManager) {
         if (this.world.money > val.seuil && !val.unlocked) {
           this.dispoManager = true;
@@ -72,10 +71,7 @@ export class AppComponent {
     }
   }
 
-    //on valide l'achat d'un produit dans le component Product
-    onAchatDone(m: number) {
-      this.world.money = this.world.money - m;
-    }
+    
 
     achatManager(m: Pallier) {
       if (this.world.money >= m.seuil) {
@@ -96,9 +92,12 @@ export class AppComponent {
       
     }
 
-    onNotifyPurchase(data) {
-      this.world.money -= data.cout;
-      this.service.putProduit(data.product);
+    onNotifyAchat(produit:Product){
+      this.service.putProduit(produit);
+    }
+
+    onNotifyPurchase(data : number) {
+      this.world.money -= data;
     }
 
     onUsernameChanged(): void {

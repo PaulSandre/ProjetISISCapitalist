@@ -49,7 +49,7 @@ export class RestserviceService {
   }
 
   public putProduit(product: Product): Promise<Response> {
-    //console.log(product);
+    console.log(product);
     return this.http
       .put(this.server + "adventureisis/generic/product", product, {
         headers: { "X-user": this.getUser() }
