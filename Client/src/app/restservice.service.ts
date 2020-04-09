@@ -59,8 +59,41 @@ export class RestserviceService {
       .catch(this.handleError);
   }
 
+  public putUpgrade(upgrade: Pallier): Promise<Response> {
+    // console.log(upgrade);
+     return this.http
+       .put(this.server + "adventureisis/generic/upgrade", upgrade, {
+         headers: { "X-user": this.getUser() }
+       })
+       .toPromise()
+       .then(response => response)
+       .catch(this.handleError);
+   }
+
+   public putAngel(angel: Pallier): Promise<Response> {
+    // console.log(angel);
+     return this.http
+       .put(this.server + "adventureisis/generic/upgradeAngel", angel, {
+         headers: { "X-user": this.getUser() }
+       })
+       .toPromise()
+       .then(response => response)
+       .catch(this.handleError);
+   }
+
+   public deleteWorld(): Promise<Response> {
+    return this.http
+      .delete(this.server + "adventureisis/generic/world", {
+        headers: this.setHeaders(this.getUser())
+      })
+      .toPromise().then(response => response)
+      .catch(this.handleError);
+  }
+
   private setHeaders(user: string): HttpHeaders {
     var headers = new HttpHeaders({ 'X-User': user });
     return headers;
   };
+
+
 }

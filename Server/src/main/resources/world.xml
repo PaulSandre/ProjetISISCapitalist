@@ -11,8 +11,8 @@ and open the template in the editor.
     xsi:noNamespaceSchemaLocation='jaxb/world/worldSchema.xsd'>
     <name>New Orleans</name>
     <logo></logo>
-    <money>200000</money>
-    <score>200000</score>
+    <money>4</money>
+    <score>4</score>
     <totalangels>0</totalangels>
     <activeangels>0</activeangels>
     <angelbonus>2</angelbonus>
@@ -116,27 +116,27 @@ and open the template in the editor.
         <pallier>
             <name>Angel Upgrades 1</name>
             <logo></logo>
-            <seuil>120000</seuil>
+            <seuil>10</seuil>
             <idcible>0</idcible>
-            <ratio>2</ratio>
+            <ratio>1</ratio>
             <typeratio>ange</typeratio>
             <unlocked>false</unlocked>
         </pallier>
         <pallier>
             <name>Angel Upgrades 2</name>
             <logo></logo>
-            <seuil>240000</seuil>
+            <seuil>20</seuil>
             <idcible>0</idcible>
-            <ratio>2</ratio>
+            <ratio>1</ratio>
             <typeratio>ange</typeratio>
             <unlocked>false</unlocked>
         </pallier>
         <pallier>
             <name>Angel Upgrades 3</name>
             <logo></logo>
-            <seuil>480000</seuil>
+            <seuil>30</seuil>
             <idcible>0</idcible>
-            <ratio>2</ratio>
+            <ratio>1</ratio>
             <typeratio>ange</typeratio>
             <unlocked>false</unlocked>
         </pallier>

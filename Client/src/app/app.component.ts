@@ -17,6 +17,9 @@ export class AppComponent {
   server: string;
   qtmulti: number = 1;
   dispoManager: boolean;
+  dispoUpgrad: boolean;
+  dispoAngel: boolean;
+  addAngels = 0;
 
   @ViewChildren(ProductComponent) public productComponent: QueryList<ProductComponent>;
   @ViewChild('bar') progressbar: any;
@@ -28,6 +31,7 @@ export class AppComponent {
     this.createUsername();
     service.getWorld().then(world => {
       console.log(world);
+      console.log(world.score)
       this.world = world;
     });
 
@@ -37,6 +41,7 @@ export class AppComponent {
     //sauvegarder le monde 
     setInterval(() => {
       this.disponibiliteManager();
+      this.disponibiliteUpgrades();
       this.bonusAllunlock()
     }, 1000);
   }
@@ -52,9 +57,33 @@ export class AppComponent {
     })
   }
 
+  disponibiliteUpgrades() {
+    this.dispoUpgrad = false;
+    this.world.upgrades.pallier.map(upgrade => {
+      if (!this.dispoUpgrad) {
+        if (!upgrade.unlocked && this.world.money > upgrade.seuil) {
+          this.dispoUpgrad = true
+        }
+      }
+    })
+  }
+
+  //on test la disponibité la disponibilité des angels
+  disponibiliteAngels() {
+    this.dispoAngel = false;
+    this.world.angelupgrades.pallier.map(angel => {
+      if (!this.dispoUpgrad) {
+        if (!angel.unlocked && this.world.activeangels > angel.seuil) {
+          this.dispoAngel = true
+        }
+      }
+    })
+  }
+
   onProductionDone(p: Product) {
-    this.world.money = this.world.money + p.quantite * p.revenu ;
-    this.world.score = this.world.score + p.quantite * p.revenu ;
+    this.world.money = this.world.money + p.quantite * p.revenu * (1 + (this.world.activeangels * this.world.angelbonus / 100));
+    this.world.score = this.world.score + p.quantite * p.revenu * (1 + (this.world.activeangels * this.world.angelbonus / 100));
+    this.addAngels = Math.round((150 * Math.sqrt(this.world.score / Math.pow(10, 15)))-this.world.totalangels);
   }
 
   commutateur() {
@@ -130,6 +159,69 @@ export class AppComponent {
         }
       })
     }
+
+    achatUpgrade(p: Pallier) {
+      if (this.world.money > p.seuil) {
+        this.world.money = this.world.money - p.seuil;
+        this.world.upgrades.pallier[this.world.upgrades.pallier.indexOf(p)].unlocked = true;
+        //si l'idcible est de 0, on applique l'upgrade sur tous les produits, sinon on recherche le produit concerné
+        if (p.idcible == 0) {
+          this.productComponent.forEach(prod => prod.calcUpgrade(p));
+          this.notifyService.showSuccess("achat d'un upgrade de " + p.typeratio + " pour tous les produits", "Upgrade global");
+        }
+        else {
+          this.productComponent.forEach(prod => {
+            if (p.idcible == prod.product.id) {
+              prod.calcUpgrade(p);
+              this.notifyService.showSuccess("achat d'un upgrade de " + p.typeratio + " pour " + prod.product.name, "Upgrade")
+            }
+          })
+        }
+        //signaler l'achat d'un upgrade au serveur 
+        this.service.putUpgrade(p);
+      }
+    }
+
+    achatAngel(p: Pallier) {
+      if (this.world.activeangels > p.seuil) {
+        this.world.activeangels -= p.seuil;
+        this.world.angelupgrades.pallier[this.world.angelupgrades.pallier.indexOf(p)].unlocked = true;
+        if (p.typeratio == "ange") {
+          this.world.money = this.world.money * p.ratio + this.world.money;
+          this.world.score = this.world.score * p.ratio + this.world.score;
+          this.notifyService.showSuccess("achat d'un upgrade de " + p.typeratio + " pour tous les produits", "Upgrade Angels")
+        }
+        //au cas ou c'est pas un upgrade de type ange
+        else {
+          //au cas ou c'est un upgrade global
+          if (p.idcible = 0) {
+            this.productComponent.forEach(prod => prod.calcUpgrade(p));
+            this.notifyService.showSuccess("achat d'un upgrade de " + p.typeratio + " pour tous les produits", "Upgrade Angels");
+          }
+          //au cas ou c'est ciblé pour un produit
+          else {
+            this.productComponent.forEach(prod => {
+              if (p.idcible == prod.product.id) {
+                prod.calcUpgrade(p);
+                this.notifyService.showSuccess("achat d'un upgrade de " + p.typeratio + " pour " + prod.product.name, "Upgrade Angels")
+              }
+            })
+  
+          }
+        }
+        console.log(this.world.totalangels,this.world.activeangels);
+        this.service.putAngel(p);
+      }
+    }
+  
+
+    claimAngel(): void {
+      this.service.deleteWorld();
+      this.service.getWorld().then(world => {
+        this.world = world;
+      });
+    }
+  
 
     
   

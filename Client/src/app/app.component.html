@@ -42,6 +42,10 @@
       <button class="button btn btnCltr btn-success btn-block" data-toggle="modal" (click)="upgradModal.show()"><span
           *ngIf="dispoUpgrad" class="badge text-warning">New</span>Cash
         Upgrades</button>
+        <button class="button btn btnCltr btn-success btn-block" (click)="investorsModal.show()">Investors</button>
+        <button class="button btn btnCltr btn-success btn-block" data-toggle="modal" (click)="angelModal.show()"><span
+          *ngIf="dispoAngel" class="badge text-warning">New</span>Angel
+        Upgrades</button>
     </div>
     <div class="col-md-10">
       <div style="margin-right: 80px; margin-left: 20px;" class="row">
@@ -95,7 +99,7 @@
             <div class="card-header cardHead text-uppercase font-weight-bold d-flex justify-content-center">
               {{unlock.typeratio}}</div>
             <div style="padding: 0;" class="card-body d-flex justify-content-center">
-              <span><img src="../assets/paris.jpg" class="imgUnlock" /></span>
+              <span><img src="../assets/jazz.jpg" class="imgUnlock" /></span>
             </div>
             <div class="card-footer bg-primary footCard text-white">
               <span class="text-uppercase font-weight-bold row d-flex justify-content-center">{{unlock.name}}</span>
@@ -121,7 +125,7 @@
       <div *ngFor="let upgrade of world.upgrades.pallier">
         <div *ngIf="!upgrade.unlocked" class="row rounded notif">
           <div class="col-md-4">
-            <span><img src="../assets/paris.jpg" class="rounded-circle round" /> </span>
+            <span><img src="../assets/jazz.jpg" class="rounded-circle round" /> </span>
           </div>
           <div class="col-md-5">
             <span class="txt2 row text-center font-weight-bold">{{upgrade.name}}</span>
@@ -137,6 +141,62 @@
     </div>
     <div class="app-modal-footer">
       <button type="button" class="btn btn-danger" (click)="upgradModal.hide()">Close</button>
+    </div>
+  </app-modal>
+  <app-modal #investorsModal>
+    <div class="app-modal-header">
+      <h4 class="modal-title">Investors !</h4>
+    </div>
+    <div style="color: aliceblue;" class="app-modal-body">
+      <div style="height: 80px; padding-top: 10px; background-color: #58355E;" class="row border rounded text-center">
+        <span class="col-md-12">Your Total angels</span>
+        <span style="font-size: 30px;" class="col-md-12" [innerHTML]="world.activeangels | bigvalue"></span>
+      </div>
+      <div class="row">
+        <div style="height: 200px; padding-top: 40px; padding-left: 30px;" class="col-md-6 border bg-info rounded">
+          <div class="row">
+            <span style="font-size: 35px;" class="col-md-12 text-center">{{world.angelbonus}}%</span>
+            <span style="margin-left: 20px;">Profit Bonus Per angel</span>
+          </div>
+        </div>
+        <div style="height: 200px; padding-top: 4px; padding-left: 15px;" class="col-md-6 border bg-info rounded">
+          <div class="row">
+            <span style="font-size: 35px;" class="col-md-12 text-center"[innerHTML]="addAngels | bigvalue"></span>
+            <span style="margin-left: 20px;">Angels Claimed with Restart</span>
+            <button [disabled]="addAngels <= 1 " class="col-md-9 btn text-white border rounded border-info validInv" (click)="claimAngel()">Claim</button>
+            <span class="col-md-12 text-center">Restart Your businesses</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="app-modal-footer">
+      <button type="button" class="btn btn-danger" (click)="investorsModal.hide()">Close</button>
+    </div>
+  </app-modal>
+  <app-modal #angelModal>
+    <div class="app-modal-header">
+      <h4 class="modal-title">Angels !</h4>
+    </div>
+    <div class="app-modal-body">
+      <div *ngFor="let angel of world.angelupgrades.pallier">
+        <div *ngIf="!angel.unlocked" class="row rounded notif">
+          <div class="col-md-4">
+            <span><img src="../assets/jazz.jpg" class="rounded-circle round"/> </span>
+          </div>
+          <div class="col-md-5">
+            <span class="txt2 row text-center font-weight-bold">{{angel.name}}</span>
+            <span class="row text-center">{{angel.typeratio}}</span>
+            <span class="row text-center">{{angel.seuil}}</span>
+          </div>
+          <div class="col-md-3">
+            <button [disabled]="world.activeangels < angel.seuil" style="height: 100px; width: 100px;" (click)="achatAngel(angel)"
+              class="btn btn-primary">Buy!</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="app-modal-footer">
+      <button type="button" class="btn btn-danger" (click)="angelModal.hide()">Close</button>
     </div>
   </app-modal>
 </div>

@@ -99,13 +99,14 @@ export class ProductComponent implements OnInit {
   }
 
   startFabrication() {
-    if (this.product.quantite >= 1) {
+    if (this.product.quantite >= 1 && !this.isRun) {
       // si le produit n'est pas déjà en production
       if (this.product.timeleft == 0 && !this.product.managerUnlocked) {
         this.lastupdate = Date.now()
         this.product.timeleft = this.product.vitesse;
         this.bar.animate(1, { duration: this.product.timeleft });
         console.log("production")
+        this.isRun = true;
 
       }
     }
@@ -113,12 +114,13 @@ export class ProductComponent implements OnInit {
 
   calcScore() {
     if (this.product) {
-      if (this.product.timeleft > 0 && this.bar) {
+      if (this.product.timeleft > 0 && this.bar ) {
         this.product.timeleft = this.product.timeleft - (Date.now() - this.lastupdate);
         this.lastupdate = Date.now();
         this.bar.animate(1, { duration: this.product.timeleft });
         if (this.product.timeleft <= 0) {
           this.product.timeleft = 0;
+          this.isRun = false;
           this.notifyProduction.emit(this.product);
           // on remet à 0 la bar quand le temps est à 0
           this.bar.set(0);
