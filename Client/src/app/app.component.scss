@@ -1,11 +1,4 @@
-.button{
-    line-height:auto;
-  }
-  .product{
-    color: aliceblue;
-    margin-bottom: 1rem!important;
-  }
-  .notif{
+.notif{
    height: 120px;
    padding-top: 10px;
    box-shadow: 0 0 20px rgba(0,0,0,0.10), 0 10px 10px rgba(0,0,0,0.10) !important;
@@ -37,17 +30,6 @@
 
   .money:hover{
     box-shadow: 0 0 0 0 !important;
-  }
-  .foot {
-    margin-top: 25px;
-  }
-  .cardUnlock{
-    margin-right: 15px; 
-    margin-left: 15px; 
-    margin-top: 10px;
-    border-radius: 20px;
-    padding: 0;
-    box-shadow: 0 0 20px rgba(0,0,0,0.10), 0 10px 10px rgba(0,0,0,0.10) !important;
   }
 
   .valid{

@@ -44,7 +44,6 @@ export class ProductComponent implements OnInit {
 
     if (this.product) {
 
-      //on initialise le coût d'achat
       this.maxAchat = this.product.cout;
 
       if (this.product.managerUnlocked && this.product.timeleft > 0 && this.bar) {
@@ -100,7 +99,6 @@ export class ProductComponent implements OnInit {
 
   startFabrication() {
     if (this.product.quantite >= 1 && !this.isRun) {
-      // si le produit n'est pas déjà en production
       if (this.product.timeleft == 0 && !this.product.managerUnlocked) {
         this.lastupdate = Date.now()
         this.product.timeleft = this.product.vitesse;
@@ -122,7 +120,6 @@ export class ProductComponent implements OnInit {
           this.product.timeleft = 0;
           this.isRun = false;
           this.notifyProduction.emit(this.product);
-          // on remet à 0 la bar quand le temps est à 0
           this.bar.set(0);
           if (this.product.managerUnlocked) {
             this.product.timeleft = this.product.vitesse;
@@ -141,14 +138,10 @@ export class ProductComponent implements OnInit {
     }
   }
 
-  //Calcul de la quantité maxium de produit que l'on peut acheter 
+
   calcMaxCanBuy(): number {
-    this.cost = this.CoutIndiv();
-    //console.log("cout d'un prod"+this.cost);
+    this.cost = this.CoutIndiv()
     let maxCanBuy = 0;
-    //on part du n-ieme produit jusqu'au maximum qu'on peut acheter
-    //console.log("cout de l'obj"+this.cost);
-    // console.log("money : "+this.money);
     while (this.cost <= this._money) {
       this.cost = this.cost + this.product.cout * this.product.croissance ** (this.product.quantite + maxCanBuy + 1);
       maxCanBuy += 1;
@@ -157,11 +150,10 @@ export class ProductComponent implements OnInit {
     return maxCanBuy;
   }
 
-  //Calcul du cout du n-ieme produit
+
   CoutIndiv() {
     this.coutAchat1 = 0;
     this.coutAchat2 = 0;
-    //console.log("qtité : "+this.product.quantite);
     if (this.product) {
       for (let y = 0; y <= this.product.quantite; y++) {
         this.coutAchat1 = this.coutAchat1 + this.product.cout * this.product.croissance ** (y);
@@ -174,7 +166,6 @@ export class ProductComponent implements OnInit {
     }
   }
 
-  //Calcul du coup d'achat d'un produit
   achatProduct() {
     this.coutAchat = 0;
     if (this.product.quantite<=0){
@@ -185,17 +176,15 @@ export class ProductComponent implements OnInit {
         this.coutAchat = this.coutAchat + this.product.cout * this.product.croissance ** (y);
       }
       this.cout = this.coutAchat;
-      // cout de la nouvelle demande (x1,x10,x100,max) + cout de l'ancienne
       for (let i = this.product.quantite; i < this._qtmulti + this.product.quantite; i++) {
         this.cout = this.cout + this.product.cout * this.product.croissance ** (i);
       }
-      //calcul du cout de la nouvelle demande
       let EmissionCout = this.cout - this.coutAchat;
-      //calcul de la nouvelle quantite
       this.notifyPurchase.emit( EmissionCout);
       this.product.quantite = this.product.quantite + this._qtmulti;
       this.notifyAchat.emit(this.product);
       this.product.palliers.pallier.forEach(value => {
+        console.log(value);
         if (!value.unlocked && this.product.quantite > value.seuil) {
           this.product.palliers.pallier[this.product.palliers.pallier.indexOf(value)].unlocked = true;
           this.calcUpgrade(value);
@@ -215,7 +204,6 @@ export class ProductComponent implements OnInit {
         break;
     }
   }
-
 }
 
 
