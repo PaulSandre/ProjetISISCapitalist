@@ -8,11 +8,11 @@ and open the template in the editor.
 
 <world
     xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
-    xsi:noNamespaceSchemaLocation='jaxb/world/worldSchema.xsd'>
-    <name>New Orleans</name>
+    xsi:noNamespaceSchemaLocation='jaxb/WorldSchema/SchemaWorld.xml.xsd'>
+    <name>NEW ORLEANS</name>
     <logo></logo>
-    <money>4</money>
-    <score>4</score>
+    <money>200000</money>
+    <score>200000</score>
     <totalangels>0</totalangels>
     <activeangels>0</activeangels>
     <angelbonus>2</angelbonus>
@@ -20,127 +20,455 @@ and open the template in the editor.
     <products>
         <product>
             <id>1</id>
-            <name>Saxophonist</name>
+            <name>Saxophoniste</name>
             <logo>icones/saxophone.jpg</logo>
             <cout>4</cout>
             <croissance>1.07</croissance>
-            <revenu>3</revenu>
+            <revenu>1</revenu>
             <vitesse>500</vitesse>
             <quantite>0</quantite>
             <timeleft>0</timeleft>
-            <managerUnlocked>false</managerUnlocked>
-            <palliers>
+            <managerUnlocked>0</managerUnlocked>
+            <palliers>            
                 <pallier>
-                    <name>Unlock A1</name>
-                    <logo></logo>
-                    <seuil>30</seuil>
-                    <idcible>0</idcible>
-                    <ratio>1.2</ratio>
-                    <typeratio>vitesse</typeratio>
-                    <unlocked>false</unlocked>
-                </pallier>
-                <pallier>
-                    <name>Unlock B1</name>
-                    <logo></logo>
+                    <name>Vitesse du saxophoniste</name>
+                    <logo>icones/saxophone.jpg</logo>
                     <seuil>25</seuil>
-                    <idcible>0</idcible>
-                    <ratio>1.5</ratio>
-                    <typeratio>gain</typeratio>
-                    <unlocked>false</unlocked>
+                    <idcible>1</idcible>
+                    <ratio>2</ratio>
+                    <typeratio>vitesse</typeratio>
+                    <unlocked>0</unlocked>
                 </pallier>
+                <pallier>
+                    <name>Vitesse du saxophoniste</name>
+                    <logo>icones/saxophone.jpg</logo>
+                    <seuil>50</seuil>
+                    <idcible>1</idcible>
+                    <ratio>2</ratio>
+                    <typeratio>vitesse</typeratio>
+                    <unlocked>0</unlocked>
+                </pallier>
+                <pallier>
+                    <name>Gain du saxophoniste</name>
+                    <logo>icones/saxophone.jpg</logo>
+                    <seuil>100</seuil>
+                    <idcible>1</idcible>
+                    <ratio>3</ratio>
+                    <typeratio>gain</typeratio>
+                    <unlocked>0</unlocked>
+                </pallier>            
             </palliers>
         </product>
         <product>
             <id>2</id>
-            <name>Pianist</name>
+            <name>Pianiste</name>
             <logo>icones/piano.jpg</logo>
-            <cout>60</cout>
-            <croissance>1.15</croissance>
-            <revenu>60</revenu>
+            <cout>40</cout>
+            <croissance>1.07</croissance>
+            <revenu>10</revenu>
             <vitesse>2500</vitesse>
             <quantite>0</quantite>
             <timeleft>0</timeleft>
-            <managerUnlocked>15000</managerUnlocked>
+            <managerUnlocked>0</managerUnlocked>
             <palliers>
                 <pallier>
-                    <name>Unlock A2</name>
-                    <logo></logo>
-                    <seuil>30</seuil>
-                    <idcible>0</idcible>
-                    <ratio>1.2</ratio>
+                    <name>Vitesse du pianiste</name>
+                    <logo>icones/piano.jpg</logo>
+                    <seuil>25</seuil>
+                    <idcible>2</idcible>
+                    <ratio>2</ratio>
                     <typeratio>vitesse</typeratio>
-                    <unlocked>false</unlocked>
+                    <unlocked>0</unlocked>
                 </pallier>
                 <pallier>
-                    <name>Unlock B2</name>
-                    <logo></logo>
-                    <seuil>25</seuil>
-                    <idcible>0</idcible>
-                    <ratio>1.5</ratio>
+                    <name>Vitesse du pianiste</name>
+                    <logo>icones/piano.jpg</logo>
+                    <seuil>50</seuil>
+                    <idcible>2</idcible>
+                    <ratio>2</ratio>
+                    <typeratio>vitesse</typeratio>
+                    <unlocked>0</unlocked>
+                </pallier>
+                <pallier>
+                    <name>Gain du pianiste</name>
+                    <logo>icones/piano.jpg</logo>
+                    <seuil>100</seuil>
+                    <idcible>2</idcible>
+                    <ratio>3</ratio>
                     <typeratio>gain</typeratio>
-                    <unlocked>false</unlocked>
+                    <unlocked>0</unlocked>
+                </pallier>              
+            </palliers>
+        </product>
+        <product>
+            <id>3</id>
+            <name>Contrebassiste</name>
+            <logo>icones/bassist.jpg</logo>
+            <cout>700</cout>
+            <croissance>1.07</croissance>
+            <revenu>50</revenu>
+            <vitesse>15000</vitesse>
+            <quantite>0</quantite>
+            <timeleft>0</timeleft>
+            <managerUnlocked>0</managerUnlocked>
+            <palliers>
+                <pallier>
+                    <name>Vitesse du contrebassiste</name>
+                    <logo>icones/bassist.jpg</logo>
+                    <seuil>25</seuil>
+                    <idcible>3</idcible>
+                    <ratio>2</ratio>
+                    <typeratio>vitesse</typeratio>
+                    <unlocked>0</unlocked>
+                </pallier>
+                <pallier>
+                    <name>Vitesse du contrebassiste</name>
+                    <logo>icones/bassist.jpg</logo>
+                    <seuil>50</seuil>
+                    <idcible>3</idcible>
+                    <ratio>2</ratio>
+                    <typeratio>vitesse</typeratio>
+                    <unlocked>0</unlocked>
+                </pallier>
+                <pallier>
+                    <name>Gain du contrebassiste</name>
+                    <logo>icones/bassist.jpg</logo>
+                    <seuil>100</seuil>
+                    <idcible>3</idcible>
+                    <ratio>3</ratio>
+                    <typeratio>gain</typeratio>
+                    <unlocked>0</unlocked>
+                </pallier>          
+            </palliers>
+        </product>
+        <product>
+            <id>4</id>
+            <name>Batteur</name>
+            <logo>icones/drummer.jpg</logo>
+            <cout>8000</cout>
+            <croissance>1.07</croissance>
+            <revenu>500</revenu>
+            <vitesse>60000</vitesse>
+            <quantite>0</quantite>
+            <timeleft>0</timeleft>
+            <managerUnlocked>0</managerUnlocked>
+            <palliers>
+                <pallier>
+                    <name>Vitesse du batteur</name>
+                    <logo>icones/drummer.jpg</logo>
+                    <seuil>25</seuil>
+                    <idcible>4</idcible>
+                    <ratio>2</ratio>
+                    <typeratio>vitesse</typeratio>
+                    <unlocked>0</unlocked>
+                </pallier>
+                <pallier>
+                    <name>Vitesse du batteur</name>
+                    <logo>icones/drummer.jpg</logo>
+                    <seuil>50</seuil>
+                    <idcible>4</idcible>
+                    <ratio>2</ratio>
+                    <typeratio>vitesse</typeratio>
+                    <unlocked>0</unlocked>
+                </pallier>
+                <pallier>
+                    <name>Gain du batteur</name>
+                    <logo>icones/drummer.jpg</logo>
+                    <seuil>100</seuil>
+                    <idcible>4</idcible>
+                    <ratio>3</ratio>
+                    <typeratio>gain</typeratio>
+                    <unlocked>0</unlocked>
+                </pallier>
+            </palliers>
+        </product>
+        <product>
+            <id>5</id>
+            <name>Clarinettiste</name>
+            <logo>icones/clarinettist.jpg</logo>
+            <cout>80000</cout>
+            <croissance>1.07</croissance>
+            <revenu>2500</revenu>
+            <vitesse>150000</vitesse>
+            <quantite>0</quantite>
+            <timeleft>0</timeleft>
+            <managerUnlocked>0</managerUnlocked>
+            <palliers>
+                <pallier>
+                    <name>Vitesse du clarinettiste</name>
+                    <logo>icones/clarinettist.jpg</logo>
+                    <seuil>25</seuil>
+                    <idcible>5</idcible>
+                    <ratio>2</ratio>
+                    <typeratio>vitesse</typeratio>
+                    <unlocked>0</unlocked>
+                </pallier>
+                <pallier>
+                    <name>Vitesse du clarinettiste</name>
+                    <logo>icones/clarinettist.jpg</logo>
+                    <seuil>50</seuil>
+                    <idcible>5</idcible>
+                    <ratio>2</ratio>
+                    <typeratio>vitesse</typeratio>
+                    <unlocked>0</unlocked>
+                </pallier>
+                <pallier>
+                    <name>Gain du clarinnetiste</name>
+                    <logo>icones/clarinettist.jpg</logo>
+                    <seuil>100</seuil>
+                    <idcible>5</idcible>
+                    <ratio>3</ratio>
+                    <typeratio>gain</typeratio>
+                    <unlocked>0</unlocked>
+                </pallier>
+            </palliers>
+        </product>
+        <product>
+            <id>6</id>
+            <name>Chanteur</name>
+            <logo>icones/singer.jpg</logo>
+            <cout>200000</cout>
+            <croissance>1.07</croissance>
+            <revenu>10000</revenu>
+            <vitesse>600000</vitesse>
+            <quantite>0</quantite>
+            <timeleft>0</timeleft>
+            <managerUnlocked>0</managerUnlocked>
+            <palliers>
+                <pallier>
+                    <name>Vitesse du chanteur</name>
+                    <logo>icones/singer.jpg</logo>
+                    <seuil>25</seuil>
+                    <idcible>6</idcible>
+                    <ratio>2</ratio>
+                    <typeratio>vitesse</typeratio>
+                    <unlocked>0</unlocked>
+                </pallier>
+                <pallier>
+                    <name>Vitesse du chanteur</name>
+                    <logo>icones/singer.jpg</logo>
+                    <seuil>50</seuil>
+                    <idcible>6</idcible>
+                    <ratio>2</ratio>
+                    <typeratio>vitesse</typeratio>
+                    <unlocked>0</unlocked>
+                </pallier>
+                <pallier>
+                    <name>Gain du chanteur</name>
+                    <logo>icones/singer.jpg</logo>
+                    <seuil>100</seuil>
+                    <idcible>6</idcible>
+                    <ratio>3</ratio>
+                    <typeratio>gain</typeratio>
+                    <unlocked>0</unlocked>
                 </pallier>
             </palliers>
         </product>
     </products>
     <allunlocks>
         <pallier>
-            <name>Unlock 1</name>
-            <logo></logo>
-            <seuil>10</seuil>
+            <name>Vitesse des artistes</name>
+            <logo>icones/jazzband.jpg</logo>
+            <seuil>30</seuil>
             <idcible>0</idcible>
             <ratio>2</ratio>
             <typeratio>vitesse</typeratio>
             <unlocked>false</unlocked>
         </pallier>
         <pallier>
-            <name>Unlock 2</name>
-            <logo></logo>
-            <seuil>16</seuil>
+            <name>Vitesse des artistes</name>
+            <logo>icones/jazzband.jpg</logo>
+            <seuil>60</seuil>
             <idcible>0</idcible>
             <ratio>2</ratio>
+            <typeratio>vitesse</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Gain des artistes</name>
+            <logo>icones/jazzband.jpg</logo>
+            <seuil>110</seuil>
+            <idcible>0</idcible>
+            <ratio>3</ratio>
             <typeratio>gain</typeratio>
             <unlocked>false</unlocked>
         </pallier>
         <pallier>
-            <name>Unlock 3</name>
-            <logo></logo>
-            <seuil>20</seuil>
+            <name>Gain des artistes</name>
+            <logo>icones/jazzband.jpg</logo>
+            <seuil>200</seuil>
             <idcible>0</idcible>
-            <ratio>1</ratio>
-            <typeratio>ange</typeratio>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>false</unlocked>
+        </pallier>
+        <pallier>
+            <name>Gain des artistes</name>
+            <logo>icones/jazzband.jpg</logo>
+            <seuil>400</seuil>
+            <idcible>0</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
             <unlocked>false</unlocked>
         </pallier>
     </allunlocks>
+    <upgrades>
+        <pallier>
+            <name>Gain des artistes</name>
+            <logo>icones/jazzband.jpg</logo>
+            <seuil>25000</seuil>
+            <idcible>0</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>0</unlocked>
+        </pallier>
+        <pallier>
+            <name>Gain du pianiste</name>
+            <logo>icones/piano.jpg</logo>
+            <seuil>50000</seuil>
+            <idcible>2</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>0</unlocked>
+        </pallier>
+        <pallier>
+            <name>Gain du contrebassiste</name>
+            <logo>icones/bassist.jpg</logo>
+            <seuil>10000</seuil>
+            <idcible>3</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>0</unlocked>
+        </pallier>
+        <pallier>
+            <name>Gain du batteur</name>
+            <logo>icones/drummer.jpg</logo>
+            <seuil>50000</seuil>
+            <idcible>4</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>0</unlocked>
+        </pallier>
+        <pallier>
+            <name>Gain du clarinettiste</name>
+            <logo>icones/clarinettist.jpg</logo>
+            <seuil>100000</seuil>
+            <idcible>5</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>0</unlocked>
+        </pallier>
+        <pallier>
+            <name>Gain du chanteur</name>
+            <logo>icones/singer.jpg</logo>
+            <seuil>250000</seuil>
+            <idcible>6</idcible>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>0</unlocked>
+        </pallier>
+        <pallier>
+            <name>Vitesse du saxophoniste</name>
+            <logo>icones/saxophone.jpg</logo>
+            <seuil>500000</seuil>
+            <idcible>1</idcible>
+            <ratio>1.5</ratio>
+            <typeratio>vitesse</typeratio>
+            <unlocked>0</unlocked>
+        </pallier>
+        <pallier>
+            <name>Vitesse du pianiste</name>
+            <logo>icones/piano.jpg</logo>
+            <seuil>1000000</seuil>
+            <idcible>2</idcible>
+            <ratio>1.5</ratio>
+            <typeratio>vitesse</typeratio>
+            <unlocked>0</unlocked>
+        </pallier>
+        <pallier>
+            <name>Vitesse du co...bassiste</name>
+            <logo>icones/bassist.jpg</logo>
+            <seuil>1000000</seuil>
+            <idcible>3</idcible>
+            <ratio>1.5</ratio>
+            <typeratio>vitesse</typeratio>
+            <unlocked>0</unlocked>
+        </pallier>
+        <pallier>
+            <name>Vitesse du batteur</name>
+            <logo>icones/drummer.jpg</logo>
+            <seuil>2500000</seuil>
+            <idcible>4</idcible>
+            <ratio>1.5</ratio>
+            <typeratio>vitesse</typeratio>
+            <unlocked>0</unlocked>
+        </pallier>
+        <pallier>
+            <name>Vitesse du clarinettiste</name>
+            <logo>icones/clarinettist.jpg</logo>
+            <seuil>2500000</seuil>
+            <idcible>5</idcible>
+            <ratio>1.5</ratio>
+            <typeratio>vitesse</typeratio>
+            <unlocked>0</unlocked>
+        </pallier>
+    </upgrades>
     <angelupgrades>
         <pallier>
-            <name>Angel Upgrades 1</name>
-            <logo></logo>
-            <seuil>10</seuil>
+            <name>Ange de gain</name>
+            <logo>icones/ange.png</logo>
+            <seuil>10000</seuil>
             <idcible>0</idcible>
-            <ratio>1</ratio>
-            <typeratio>ange</typeratio>
-            <unlocked>false</unlocked>
-        </pallier>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>0</unlocked>
+        </pallier>  
         <pallier>
-            <name>Angel Upgrades 2</name>
-            <logo></logo>
-            <seuil>20</seuil>
+            <name>Ange de gain</name>
+            <logo>icones/ange.png</logo>
+            <seuil>10000</seuil>
             <idcible>0</idcible>
-            <ratio>1</ratio>
-            <typeratio>ange</typeratio>
-            <unlocked>false</unlocked>
-        </pallier>
+            <ratio>3</ratio>
+            <typeratio>gain</typeratio>
+            <unlocked>0</unlocked>
+        </pallier>  
         <pallier>
-            <name>Angel Upgrades 3</name>
-            <logo></logo>
-            <seuil>30</seuil>
-            <idcible>0</idcible>
-            <ratio>1</ratio>
-            <typeratio>ange</typeratio>
-            <unlocked>false</unlocked>
-        </pallier>
-    </angelupgrades>
+            <name>Ange de bonus</name>
+            <logo>icones/ange.png</logo>
+            <seuil>100000</seuil>
+            <idcible>-1</idcible>
+            <ratio>2</ratio>
+            <typeratio>ANGE</typeratio>
+            <unlocked>0</unlocked>
+        </pallier>  
+        <pallier>
+            <name>Ange de bonus</name>
+            <logo>icones/ange.png</logo>
+            <seuil>100000000</seuil>
+            <idcible>-1</idcible>
+            <ratio>2</ratio>
+            <typeratio>ANGE</typeratio>
+            <unlocked>0</unlocked>
+        </pallier>   
+        <pallier>
+            <name>Ange de bonus</name>
+            <logo>icones/ange.png</logo>
+            <seuil>100000000</seuil>
+            <idcible>-1</idcible>
+            <ratio>2</ratio>
+            <typeratio>ANGE</typeratio>
+            <unlocked>0</unlocked>
+        </pallier>      
+        <pallier>
+            <name>Ange de bonus</name>
+            <logo>icones/ange.png</logo>
+            <seuil>100000000</seuil>
+            <idcible>-1</idcible>
+            <ratio>2</ratio>
+            <typeratio>ANGE</typeratio>
+            <unlocked>0</unlocked>
+        </pallier>    
+    </angelupgrades> 
     <managers>
         <pallier>
             <name>John Coltrane</name>
@@ -149,108 +477,52 @@ and open the template in the editor.
             <idcible>1</idcible>
             <ratio></ratio>
             <typeratio></typeratio>
-            <unlocked>false</unlocked>
+            <unlocked>0</unlocked>
         </pallier>
         <pallier>
-            <name>Ray Charles</name>
-            <logo>icones/charles.jpg</logo>
+            <name>Duke Ellington</name>
+            <logo>icones/ellington.jpg</logo>
             <seuil>15000</seuil>
             <idcible>2</idcible>
             <ratio></ratio>
             <typeratio></typeratio>
-            <unlocked>false</unlocked>
+            <unlocked>0</unlocked>
+        </pallier>
+        <pallier>
+            <name>Charles Mingus</name>
+            <logo>icones/mingus.jpg</logo>
+            <seuil>50000</seuil>
+            <idcible>3</idcible>
+            <ratio></ratio>
+            <typeratio></typeratio>
+            <unlocked>0</unlocked>
+        </pallier>
+        <pallier>
+            <name>Philly Joe Jones</name>
+            <logo>icones/Philly_Joe_Jones.jpg</logo>
+            <seuil>150000</seuil>
+            <idcible>4</idcible>
+            <ratio></ratio>
+            <typeratio></typeratio>
+            <unlocked>0</unlocked>
+        </pallier>
+        <pallier>
+            <name>Benny Goodman</name>
+            <logo>icones/goodman.jpg</logo>
+            <seuil>300000</seuil>
+            <idcible>5</idcible>
+            <ratio></ratio>
+            <typeratio></typeratio>
+            <unlocked>0</unlocked>
+        </pallier>
+        <pallier>
+            <name>Ella Fitzgerald</name>
+            <logo>icones/ella.jpg</logo>
+            <seuil>1000000</seuil>
+            <idcible>6</idcible>
+            <ratio></ratio>
+            <typeratio></typeratio>
+            <unlocked>0</unlocked>
         </pallier>
     </managers>
-    <upgrades>
-        <pallier>
-            <name>Cash Upgrades 1</name>
-            <logo></logo>
-            <seuil>100</seuil>
-            <idcible>1</idcible>
-            <ratio>2</ratio>
-            <typeratio>vitesse</typeratio>
-            <unlocked>false</unlocked>
-        </pallier>
-        <pallier>
-            <name>Cash Upgrades 2</name>
-            <logo></logo>
-            <seuil>1000</seuil>
-            <idcible>1</idcible>
-            <ratio>2</ratio>
-            <typeratio>vitesse</typeratio>
-            <unlocked>false</unlocked>
-        </pallier>
-        <pallier>
-            <name>Cash Upgrades 3</name>
-            <logo></logo>
-            <seuil>3000</seuil>
-            <idcible>2</idcible>
-            <ratio>2</ratio>
-            <typeratio>gain</typeratio>
-            <unlocked>false</unlocked>
-        </pallier>
-        <pallier>
-            <name>Cash Upgrades 4</name>
-            <logo></logo>
-            <seuil>6000</seuil>
-            <idcible>1</idcible>
-            <ratio>2</ratio>
-            <typeratio>gain</typeratio>
-            <unlocked>false</unlocked>
-        </pallier>
-        <pallier>
-            <name>Cash Upgrades 5</name>
-            <logo></logo>
-            <seuil>12000</seuil>
-            <idcible>1</idcible>
-            <ratio>2</ratio>
-            <typeratio>vitesse</typeratio>
-            <unlocked>false</unlocked>
-        </pallier>
-        <pallier>
-            <name>Cash Upgrades 6</name>
-            <logo></logo>
-            <seuil>15000</seuil>
-            <idcible>1</idcible>
-            <ratio>2</ratio>
-            <typeratio>vitesse</typeratio>
-            <unlocked>false</unlocked>
-        </pallier>
-        <pallier>
-            <name>Cash Upgrades 7</name>
-            <logo></logo>
-            <seuil>20000</seuil>
-            <idcible>2</idcible>
-            <ratio>2</ratio>
-            <typeratio>vitesse</typeratio>
-            <unlocked>false</unlocked>
-        </pallier>
-        <pallier>
-            <name>Cash Upgrades 8</name>
-            <logo></logo>
-            <seuil>30000</seuil>
-            <idcible>1</idcible>
-            <ratio>2</ratio>
-            <typeratio>gain</typeratio>
-            <unlocked>false</unlocked>
-        </pallier>
-        <pallier>
-            <name>Cash Upgrades 9</name>
-            <logo></logo>
-            <seuil>60000</seuil>
-            <idcible>2</idcible>
-            <ratio>2</ratio>
-            <typeratio>gain</typeratio>
-            <unlocked>false</unlocked>
-        </pallier>
-        <pallier>
-            <name>Cash Upgrades 10</name>
-            <logo></logo>
-            <seuil>120000</seuil>
-            <idcible>1</idcible>
-            <ratio>2</ratio>
-            <typeratio>vitesse</typeratio>
-            <unlocked>false</unlocked>
-        </pallier>
-    </upgrades>
 </world>
