@@ -1,25 +1,24 @@
 <div class="row">
-    <div class="col-md-3">
-        <span>
-            <img *ngIf="product" [attr.src]="server+product.logo" class="rounded-circle round img" (click)="startFabrication()" /> 
-        </span>
+    <div class="col-md-4">
+        <img *ngIf="product" [attr.src]="server+product.logo" class="rounded-circle round img"
+            (click)="startFabrication()" />
     </div>
-    <div class="centre col-md-9">
-        <span>{{product?.name}}</span>
-    </div> 
-    <div style="margin-top: 10px; margin-left: 15px; margin-right: 10px;" class="col-md">
-        <div class="row">
-            <div style="height: 35px; width: 305px; color: black;" class="txt progress" #bar>
-                <span class="cont" [innerHTML]="product?.revenu | bigvalue"></span>
-            </div>
+    <div class="col-md-7">
+        <div class="row txt producttext "><Span>{{product?.name}} : {{product?.quantite}}</Span></div>
+        <div style="height: 30px; color: black;" class="row txt progress" #bar>
+            <span class="cont" [innerHTML]="product?.revenu*product?.quantite | bigvalue"></span>
         </div>
-        <div style="margin-top: 10px;" class="txt row">
-            <button [disabled]="_qtmulti >  calcMaxCanBuy()" class="col-md-6 btn btn-info" (click)="achatProduct()">
-                <div style="font-size: 20px;" class="row rounded">
-                    <span class="col-md-7 d-flex flex-row">x{{_qtmulti}}</span>
-                    <span class="col-md-5 d-flex flex-row-reverse" [innerHTML]="product?.cout | bigvalue"></span>
+        <div class="txt row">
+            <button [disabled]="_qtmulti >  calcMaxCanBuy()" class="btn btn-warning" style="margin-top: 4px;height:40px; width: 150px; background-color: rgb(224, 168,0);"
+                (click)="achatProduct()">
+                <div style="font-size: 20px;margin-left: 10px;" class="row rounded">
+                    <span class="d-flex flex-row">Buy x{{_qtmulti}}</span>
                 </div>
             </button>
+
         </div>
+
     </div>
+
+
 </div>

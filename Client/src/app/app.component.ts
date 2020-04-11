@@ -20,6 +20,7 @@ export class AppComponent {
   dispoUpgrad: boolean;
   dispoAngel: boolean;
   addAngels = 0;
+  angelsToClaim : number = 0;
 
   @ViewChildren(ProductComponent) public productComponent: QueryList<ProductComponent>;
   @ViewChild('bar') progressbar: any;
@@ -43,6 +44,7 @@ export class AppComponent {
       this.disponibiliteManager();
       this.disponibiliteUpgrades();
       this.bonusAllunlock()
+      this.angelQty();
     }, 1000);
   }
 
@@ -83,7 +85,7 @@ export class AppComponent {
   onProductionDone(p: Product) {
     this.world.money = this.world.money + p.quantite * p.revenu * (1 + (this.world.activeangels * this.world.angelbonus / 100));
     this.world.score = this.world.score + p.quantite * p.revenu * (1 + (this.world.activeangels * this.world.angelbonus / 100));
-    this.addAngels = Math.round((150 * Math.sqrt(this.world.score / Math.pow(10, 15)))-this.world.totalangels);
+    this.service.putProduit(p);
   }
 
   commutateur() {
@@ -220,6 +222,12 @@ export class AppComponent {
       this.service.getWorld().then(world => {
         this.world = world;
       });
+    }
+
+    angelQty () {
+      this.angelsToClaim = Math.round(150 * Math.sqrt((this.world.score) / Math.pow(10, 15))) - this.world.totalangels;
+      console.log("Nombre d'Anges : " + this.angelsToClaim);
+      return this.angelsToClaim;
     }
   
 

@@ -1,9 +1,9 @@
 .button{
-    line-height: 100px;
+    line-height:auto;
   }
   .product{
     color: aliceblue;
-    box-shadow: 0 0 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22) !important;
+    margin-bottom: 1rem!important;
   }
   .notif{
    height: 120px;
@@ -18,38 +18,29 @@
   }
   .navB{
     padding-bottom: 15px;
-     padding-top: 10px;
-     box-shadow: 0 0 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22) !important;
-     font-family: sans-serif;
+    padding-top: 10px;
+    box-shadow: 0 0 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22) !important;
+    font-family: sans-serif;
+    background-color: rgb(34,34,34);
+
   }
   
   .money{
     margin-left: 15px;
+    margin-right: 15px;
     padding-top: 5px;
-    width: 250px !important;
     height: 40px;
-    background-color: rgba(255,255, 255, 0.2);
+    background-color: white;
     box-shadow: 0 0 20px rgba(0,0,0,0.10), 0 10px 10px rgba(0,0,0,0.10) !important;
     cursor: pointer;
   }
+
   .money:hover{
     box-shadow: 0 0 0 0 !important;
   }
   .foot {
     margin-top: 25px;
   }
-  .validInv{
-    background-color: #58355E;
-    box-shadow: 0 0 20px rgba(0,0,0,0.10), 0 10px 10px rgba(0,0,0,0.10) !important;
-    margin-left: 30px;
-  }
-  .validInv:hover{
-    background-color: rgb(48, 40, 49);
-  }
-  .validInv:active{
-    background-color: rgba(48, 40, 49,0.5);
-  }
-  
   .cardUnlock{
     margin-right: 15px; 
     margin-left: 15px; 
@@ -57,6 +48,11 @@
     border-radius: 20px;
     padding: 0;
     box-shadow: 0 0 20px rgba(0,0,0,0.10), 0 10px 10px rgba(0,0,0,0.10) !important;
+  }
+
+  .valid{
+    background-color: rgb(43,43,43);
+    color: rgb(255,193,5);
   }
   
   .footCard{
@@ -70,3 +66,50 @@
     height: 100%;
     width: 100%;
   }
+
+
+
+
+
+  .worldname{
+    font-family: 'Limelight';
+    color:white;
+    margin-left: 10px;
+    font-size: 37px;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+
+  .input{
+    width: 160px;
+    padding-left: 12px;
+    height: 40px;
+    vertical-align: middle;
+    line-height: 40px;
+    border-color: black;
+    font-family: 'Girassol';
+  }
+
+  input:focus {
+    outline-color:  rgb(128,102,23);
+}
+
+.commutateur{
+    height: 40px;
+    width: 155px;
+    font-size: 20px;
+    white-space: nowrap;
+    font-family: 'Girassol';
+}
+
+.commutateur:focus{
+    outline: none;
+}
+
+.btn-light{
+    height: 13vh;
+    font-family: 'Girassol';
+    font-size: 20px;
+}
+
+
